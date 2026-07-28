@@ -314,6 +314,8 @@
     padding:11px 13px; font-size:13.5px; display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
   }
   .book-item .d{ color:var(--inkSoft); font-size:12px; font-family:'IBM Plex Mono',monospace; white-space:nowrap; }
+  .book-link{ color:var(--teal-dk); text-decoration:none; font-weight:600; }
+  .book-link:hover{ color:var(--rust); }
 
   footer{ text-align:center; padding:30px 20px 50px; font-size:12px; color:var(--inkSoft); font-family:'IBM Plex Mono',monospace;}
 
@@ -832,15 +834,16 @@ const bookings = {
 /* Pendientes específicos del itinerario alternativo con Stavanger.
    El array "reservado" no cambia entre ambos itinerarios. */
 const pendienteAlt = [
-  {d:"6–8 ago", t:"Bus Kystbussen Bergen ↔ Stavanger (ida 6/8, vuelta 8/8)"},
-  {d:"7 ago", t:"Ferry + bus a Preikestolen (combo desde Stavanger)"},
+  {d:"6–8 ago", t:"Bus Kystbussen Bergen ↔ Stavanger (ida 6/8, vuelta 8/8)", url:"https://www.flixbus.es/"},
+  {d:"7 ago", t:"Ferry + bus a Preikestolen (combo desde Stavanger)", url:"https://gofjords.com/experiences/hiking/stavanger/preikestolen-express-bus-round-trip/"},
   {d:"8 ago", t:"Pueblo vikingo Njardarheimr (Gudvangen)"},
   {d:"8–9 ago", t:"Gudvangen Fjordtell (u otro alojamiento en Gudvangen)"},
   {d:"9–10 ago", t:"Hotel en Stryn"},
   {d:"10–11 ago", t:"Hotel en Åndalsnes o en Molde — definir según si hacen la Atlantic Road"},
   {d:"11–12 ago", t:"Hotel en Ålesund"},
   {d:"12–13 ago", t:"Hotel en Voss"},
-  {d:"9 ago", t:"Crucero Nærøyfjord/Aurlandsfjord ida y vuelta desde Flåm"},
+  {d:"9 ago", t:"Crucero Nærøyfjord/Aurlandsfjord ida y vuelta desde Flåm", url:"https://www.norwaysbest.com/en/flam/things-to-do/fjord-cruise-naeroyfjord"},
+  {d:"9 ago", t:"Shuttle bus Gudvangen → Flåm (vuelta después del crucero)", url:"https://www.norwaysbest.com/en/flam/things-to-do/shuttle-bus-flam-gudvangen"},
   {d:"10 ago", t:"Ferry Hellesylt → Geiranger"},
   {d:"11 ago", t:"Atlantic Road — todavía sin decidir si la hacen, y desde dónde (Molde o Åndalsnes)"},
   {d:"13 ago", t:"Traslado Torp → Oslo (bus/tren)"}
@@ -1014,11 +1017,11 @@ function renderSummary(){
 function renderBookings(){
   const reservadoActivo = altMode ? bookings.reservado.concat(reservadoAlt) : bookings.reservado;
   document.getElementById('list-reservado').innerHTML = reservadoActivo.map(b => `
-    <div class="book-item"><span>${b.t}</span><span class="d">${b.d}</span></div>
+    <div class="book-item"><span>${b.t}${b.url ? ` <a href="${b.url}" target="_blank" rel="noopener" class="book-link">↗</a>` : ''}</span><span class="d">${b.d}</span></div>
   `).join('');
   const pendienteActivo = altMode ? pendienteAlt : bookings.pendiente;
   document.getElementById('list-pendiente').innerHTML = pendienteActivo.map(b => `
-    <div class="book-item"><span>${b.t}</span><span class="d">${b.d}</span></div>
+    <div class="book-item"><span>${b.t}${b.url ? ` <a href="${b.url}" target="_blank" rel="noopener" class="book-link">↗</a>` : ''}</span><span class="d">${b.d}</span></div>
   `).join('');
 }
 
