@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mannheim, Copenhague & Noruega · 28 jul – 16 ago 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F2ECDD;
+    --paper:#FBF8F1;
+    --navy:#132330;
+    --navy2:#1C2F3D;
+    --teal:#4F8B84;
+    --teal-dk:#356863;
+    --tealLight:#CFE3DE;
+    --rust:#BE6A34;
+    --rust-light:#F1DCC9;
+    --ink:#1D2226;
+    --inkSoft:#5B6470;
+    --line:#DAD0B8;
+    --ok:#3E7D5A;
+    --ok-light:#DCEBDF;
+
+    /* colores por tramo del viaje — derivados de la paleta del sitio, alternando oscuro/claro */
+    --reg-alemania:#6E5B94;
+    --reg-alemania-light:#DCD4EC;
+    --reg-copenhague:#6E9BC2;
+    --reg-copenhague-light:#DCE8F2;
+    --reg-bergen:#2B5F58;
+    --reg-bergen-light:#C9DAD6;
+    --reg-roadtrip:#C9A227;
+    --reg-roadtrip-light:#F1E4B8;
+    --reg-oslo:#3D5C7A;
+    --reg-oslo-light:#CFDCE6;
+    --reg-stavanger:#8FCBB8;
+    --reg-stavanger-light:#E8F5F0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(175deg,var(--navy) 0%, var(--navy2) 100%);
+    color:var(--paper);
+    padding:56px 28px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:900px;
+    margin:0 auto;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:120px;
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,0.15));
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--tealLight);
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:clamp(30px,5vw,46px);
+    line-height:1.05;
+    margin:0 0 12px;
+    font-weight:600;
+    max-width:680px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--tealLight); font-weight:500;}
+  .hero-sub{
+    font-size:15.5px;
+    color:#C9D2D8;
+    max-width:560px;
+    line-height:1.55;
+    margin:0;
+  }
+  .hero-stats{
+    display:flex; gap:28px; flex-wrap:wrap; margin-top:30px;
+  }
+  .hero-stat .num{ font-family:'Fraunces',serif; font-size:26px; color:var(--paper); font-weight:600;}
+  .hero-stat .lbl{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:#9FB0B8; letter-spacing:.05em; text-transform:uppercase;}
+
+  /* ---------- TOGGLE NAV ---------- */
+  .toggle-bar{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:12px 20px;
+    display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
+    box-shadow:0 2px 10px rgba(19,35,48,0.06);
+  }
+  .toggle-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding:9px 18px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--inkSoft);
+    cursor:pointer;
+    transition:all .2s ease;
+  }
+  .toggle-btn:hover{ border-color:var(--teal); color:var(--teal-dk); }
+  .toggle-btn.active{
+    background:var(--navy); color:var(--paper); border-color:var(--navy);
+  }
+
+  .alt-switch-bar{
+    display:flex; justify-content:center; padding:14px 20px 0;
+    background:var(--paper);
+  }
+  .alt-switch{
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px;
+    color:var(--inkSoft); cursor:pointer; user-select:none;
+  }
+  .alt-switch input{ position:absolute; opacity:0; width:0; height:0; }
+  .alt-switch-track{
+    width:38px; height:20px; border-radius:100px;
+    background:var(--line); position:relative; flex-shrink:0;
+    transition:background .2s ease;
+  }
+  .alt-switch-thumb{
+    position:absolute; top:2px; left:2px; width:16px; height:16px;
+    border-radius:50%; background:var(--paper);
+    transition:transform .2s ease; box-shadow:0 1px 2px rgba(0,0,0,0.2);
+  }
+  .alt-switch input:checked + .alt-switch-track{ background:var(--reg-stavanger); }
+  .alt-switch input:checked + .alt-switch-track .alt-switch-thumb{ transform:translateX(18px); }
+  .alt-switch input:checked ~ .alt-switch-label{ color:var(--teal-dk); font-weight:600; }
+
+  main{ max-width:900px; margin:0 auto; padding:36px 20px 100px; }
+  .view{ display:none; }
+  .view.active{ display:block; animation:fade .35s ease; }
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+
+  .section-title{
+    font-size:13px; font-family:'IBM Plex Mono',monospace;
+    text-transform:uppercase; letter-spacing:.12em; color:var(--teal-dk);
+    margin:0 0 6px;
+  }
+  .section-note{
+    color:var(--inkSoft); font-size:14.5px; margin:0 0 28px; max-width:640px; line-height:1.5;
+  }
+
+  /* ---------- day picker ---------- */
+  .day-picker{
+    display:flex; gap:6px; flex-wrap:wrap; margin-bottom:26px;
+  }
+  .day-pick-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    padding:6px 12px 5px;
+    border-radius:7px;
+    border:1px solid var(--line);
+    border-bottom:3px solid var(--line);
+    background:var(--paper);
+    color:var(--inkSoft);
+    cursor:pointer;
+    transition:all .15s ease;
+    white-space:nowrap;
+  }
+  .day-pick-btn:hover{ border-color:var(--teal); color:var(--teal-dk); }
+  .day-pick-btn.active{ background:var(--teal-dk); border-color:var(--teal-dk); color:var(--paper); }
+  .day-pick-btn[data-region="alemania"]{ border-bottom-color:var(--reg-alemania); }
+  .day-pick-btn[data-region="alemania"].active{ background:var(--reg-alemania); border-color:var(--reg-alemania); color:var(--paper); }
+  .day-pick-btn[data-region="copenhague"]{ border-bottom-color:var(--reg-copenhague); }
+  .day-pick-btn[data-region="copenhague"].active{ background:var(--reg-copenhague); border-color:var(--reg-copenhague); color:var(--paper); }
+  .day-pick-btn[data-region="bergen"]{ border-bottom-color:var(--reg-bergen); }
+  .day-pick-btn[data-region="bergen"].active{ background:var(--reg-bergen); border-color:var(--reg-bergen); color:var(--paper); }
+  .day-pick-btn[data-region="roadtrip"]{ border-bottom-color:var(--reg-roadtrip); }
+  .day-pick-btn[data-region="roadtrip"].active{ background:var(--reg-roadtrip); border-color:var(--reg-roadtrip); color:var(--ink); }
+  .day-pick-btn[data-region="oslo"]{ border-bottom-color:var(--reg-oslo); }
+  .day-pick-btn[data-region="oslo"].active{ background:var(--reg-oslo); border-color:var(--reg-oslo); color:var(--paper); }
+  .day-pick-btn[data-region="stavanger"]{ border-bottom-color:var(--reg-stavanger); }
+  .day-pick-btn[data-region="stavanger"].active{ background:var(--reg-stavanger); border-color:var(--reg-stavanger); color:var(--ink); }
+
+  .day-legend{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
+  .day-legend span{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--inkSoft);
+  }
+  .day-legend i{ width:12px; height:12px; border-radius:3px; display:inline-block; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.08); }
+
+  .day-card.hidden{ display:none; }
+
+  .options-note{ font-size:12.5px; color:var(--inkSoft); font-style:italic; margin-bottom:14px; }
+  .option-block{
+    border:1px dashed var(--line);
+    border-radius:9px;
+    padding:14px 14px 12px;
+    margin-bottom:14px;
+  }
+  .option-block:last-child{ margin-bottom:0; }
+  .option-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.05em; color:var(--rust); font-weight:600; margin-bottom:4px;
+  }
+
+  /* ---------- DAY-BY-DAY (route log) ---------- */
+  .route{
+    position:relative;
+    padding-left:56px;
+  }
+  .route::before{
+    content:"";
+    position:absolute; left:22px; top:6px; bottom:6px; width:2px;
+    background:repeating-linear-gradient(to bottom, var(--teal) 0 6px, transparent 6px 11px);
+  }
+  .day-card{
+    position:relative;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 22px 18px;
+    margin-bottom:18px;
+  }
+  .day-node{
+    position:absolute; left:-56px; top:22px;
+    width:44px; height:44px;
+    background:var(--navy);
+    border:3px solid var(--cream);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600;
+    color:var(--tealLight);
+    box-shadow:0 0 0 2px var(--teal);
+  }
+  .day-head{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:4px;}
+  .day-date{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--inkSoft); text-transform:uppercase; letter-spacing:.04em;}
+  .day-title{ font-size:20px; margin:2px 0 2px; font-weight:600; }
+  .day-route{ font-size:13.5px; color:var(--teal-dk); font-weight:500; margin-bottom:14px;}
+  .day-items{ display:flex; flex-direction:column; gap:10px; }
+  .item{
+    display:flex; gap:10px; align-items:flex-start;
+    padding:10px 12px;
+    background:var(--cream);
+    border-radius:8px;
+    border:1px solid transparent;
+  }
+  .item.stay{ background:var(--tealLight); }
+  .item.warn{ background:var(--rust-light); }
+  .item .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--paper); background:var(--teal-dk);
+    padding:3px 7px; border-radius:5px; white-space:nowrap; margin-top:2px;
+  }
+  .item .tag.tag-warn{ background:var(--rust); }
+  .item.stay .tag{ background:var(--navy); }
+  .item .body{ flex:1; }
+  .item .body .txt{ font-size:14.5px; line-height:1.45; }
+  .item .body .note{ font-size:12.5px; color:var(--inkSoft); margin-top:3px; line-height:1.4;}
+  .item .body .txt a{
+    color:var(--teal-dk);
+    text-decoration:none;
+    border-bottom:1px dotted var(--teal-dk);
+    font-weight:600;
+  }
+  .item .body .txt a:hover{ color:var(--rust); border-color:var(--rust); }
+  .item .body .txt a::after{
+    content:"↗"; font-size:11px; margin-left:2px; opacity:.7;
+  }
+  .status-pill{
+    font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase;
+    padding:2px 7px; border-radius:5px; margin-left:6px; letter-spacing:.03em;
+  }
+  .status-pill.reservado{ background:var(--ok-light); color:var(--ok); }
+  .status-pill.pendiente{ background:var(--rust-light); color:var(--rust); }
+
+  /* ---------- RESUMEN VIEW ---------- */
+  .summary-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:30px; }
+  .summary-card{ background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:16px 18px; }
+  .summary-card h3{ margin:0 0 8px; font-size:15px; color:var(--navy); }
+  .summary-card ul{ margin:0; padding-left:18px; font-size:13.5px; color:var(--inkSoft); line-height:1.6; }
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:10px; }
+  table{ width:100%; border-collapse:collapse; background:var(--paper); font-size:13.5px; }
+  th,td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th{ font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--inkSoft); background:var(--cream); }
+  tr:last-child td{ border-bottom:none; }
+  .car-box{
+    margin-top:22px; padding:16px 18px; border-radius:10px;
+    background:var(--navy); color:var(--paper); display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+  }
+  .car-box .num{ font-family:'Fraunces',serif; font-size:30px; font-weight:600; color:var(--tealLight); }
+  .car-box .txt{ font-size:13.5px; color:#C9D2D8; max-width:520px; line-height:1.5;}
+
+  /* ---------- RESERVAS VIEW ---------- */
+  .book-cols{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media(max-width:680px){ .book-cols{ grid-template-columns:1fr; } }
+  .book-col h3{ display:flex; align-items:center; gap:8px; font-size:15px; margin-bottom:12px; }
+  .dot{ width:9px; height:9px; border-radius:50%; display:inline-block; }
+  .dot.ok{ background:var(--ok); } .dot.pend{ background:var(--rust); }
+  .book-list{ display:flex; flex-direction:column; gap:8px; }
+  .book-item{
+    background:var(--paper); border:1px solid var(--line); border-radius:8px;
+    padding:11px 13px; font-size:13.5px; display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
+  }
+  .book-item .d{ color:var(--inkSoft); font-size:12px; font-family:'IBM Plex Mono',monospace; white-space:nowrap; }
+
+  footer{ text-align:center; padding:30px 20px 50px; font-size:12px; color:var(--inkSoft); font-family:'IBM Plex Mono',monospace;}
+
+  .edit-hint{
+    max-width:900px; margin:0 auto; padding:0 20px;
+  }
+  .edit-hint details{ background:var(--tealLight); border-radius:8px; padding:10px 16px; font-size:12.5px; color:var(--teal-dk); margin-top:18px;}
+  .edit-hint summary{ cursor:pointer; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:11px; letter-spacing:.05em;}
+  .edit-hint code{ background:rgba(255,255,255,0.5); padding:1px 5px; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+  <div class="hero-eyebrow">Bitácora de viaje · Cote &amp; Lu</div>
+  <h1>Mannheim, Copenhague, fiordos <em>&amp; carretera noruega</em></h1>
+  <p class="hero-sub">Desde Buenos Aires hasta los fiordos noruegos y de vuelta: unos días en Mannheim, canales daneses, Stavanger con Preikestolen, y una vuelta por Bergen, Nærøyfjord, Geirangerfjord, Ålesund y Oslo, con auto propio para la parte que el transporte público no cubre bien.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">20</div><div class="lbl">Días totales</div></div>
+    <div class="hero-stat"><div class="num">5</div><div class="lbl">Ciudades base</div></div>
+    <div class="hero-stat"><div class="num">5</div><div class="lbl">Días de auto</div></div>
+    <div class="hero-stat"><div class="num">2</div><div class="lbl">Cruceros de fiordo</div></div>
+  </div>
+  </div>
+</div>
+
+<div class="toggle-bar">
+  <button class="toggle-btn active" data-view="dias">Día a día</button>
+  <button class="toggle-btn" data-view="resumen">Resumen del viaje</button>
+  <button class="toggle-btn" data-view="reservas">Reservado / Pendiente</button>
+</div>
+
+<!--
+  Switch para alternar entre itinerario original y alternativo — comentado porque
+  ahora solo se usa el alternativo (con Stavanger + Preikestolen), que es el que
+  se está reservando. Se deja el código acá por si en algún momento hace falta
+  volver a comparar contra el itinerario original.
+
+<div class="alt-switch-bar">
+  <label class="alt-switch">
+    <input type="checkbox" id="alt-toggle">
+    <span class="alt-switch-track"><span class="alt-switch-thumb"></span></span>
+    <span class="alt-switch-label">Itinerario alternativo con Stavanger + Preikestolen</span>
+  </label>
+</div>
+-->
+
+<main>
+
+  <!-- ================= VISTA DIA A DIA ================= -->
+  <section id="view-dias" class="view active">
+    <p class="section-title">Itinerario</p>
+    <p class="section-note">Cada tarjeta es un día. Los nombres subrayados llevan a Google Maps. Los cruceros indican siempre desde qué muelle salen.</p>
+    <div id="day-legend" class="day-legend"></div>
+    <div id="day-picker" class="day-picker"></div>
+    <div id="route" class="route"></div>
+  </section>
+
+  <!-- ================= VISTA RESUMEN ================= -->
+  <section id="view-resumen" class="view">
+    <p class="section-title">Resumen total</p>
+    <p class="section-note">La forma general del viaje, de un vistazo.</p>
+
+    <div class="summary-grid" id="summary-cards"></div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Fecha</th><th>Base / traslado</th><th>Highlight del día</th></tr></thead>
+        <tbody id="summary-table"></tbody>
+      </table>
+    </div>
+
+    <div class="car-box">
+      <div class="num">5 días</div>
+      <div class="txt">Auto de alquiler <strong>confirmado</strong>: Europcar, Volvo EX30 eléctrico (AWD). Retiro <strong>sábado 8/8 a las 13:00 en el aeropuerto de Bergen (Flesland)</strong>, devolución <strong>jueves 13/8 a las 8:00</strong>, mismo lugar, antes del vuelo de las 10:50 a Torp. Ojo: se retira en el aeropuerto, no en el centro — hay que sumar el traslado desde la estación de bus.</div>
+    </div>
+  </section>
+
+  <!-- ================= VISTA RESERVAS ================= -->
+  <section id="view-reservas" class="view">
+    <p class="section-title">Estado de reservas</p>
+    <p class="section-note">Para ir tildando a medida que reservan. Editá el array <code>bookings</code> en el HTML para mover cosas de una columna a otra.</p>
+    <div class="book-cols">
+      <div class="book-col">
+        <h3><span class="dot ok"></span> Reservado</h3>
+        <div class="book-list" id="list-reservado"></div>
+      </div>
+      <div class="book-col">
+        <h3><span class="dot pend"></span> Pendiente</h3>
+        <div class="book-list" id="list-pendiente"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="edit-hint">
+  <details>
+    <summary>¿Cómo edito esto?</summary>
+    Todo el contenido vive en el array <code>days</code> y el objeto <code>bookings</code> dentro del <code>&lt;script&gt;</code>, al final del archivo. Cada día tiene <code>items</code> (actividades, traslados, alojamiento) con un campo <code>map</code> opcional que genera el link a Google Maps automáticamente. No hace falta tocar el HTML ni el CSS para actualizar fechas, lugares o el estado de una reserva.
+  </details>
+</div>
+
+<footer>Última edición del plan · antes de reservar, confirmar horarios de ferries y cruceros — cambian por temporada.</footer>
+
+<script>
+/* ======================================================================
+   DATOS DEL VIAJE — editar acá. Cada día: date, weekday, dayNum, title,
+   route (texto corto de traslado), items[]. Cada item: tag, text, note,
+   map (nombre a buscar en Google Maps), status ('reservado'|'pendiente').
+   ====================================================================== */
+const days = [
+  {
+    date:"28–29 jul", weekday:"Martes a miércoles", dayNum:"D01", region:"alemania",
+    title:"Buenos Aires → Frankfurt",
+    route:"Ezeiza → Roma → Frankfurt",
+    items:[
+      {tag:"vuelo", text:"ITA AZ681, Buenos Aires (EZE) → Roma (FCO), mar 28/7 12:55 → mié 29/7 06:40", status:"reservado"},
+      {tag:"vuelo", text:"ITA AZ400, Roma (FCO) → Frankfurt (FRA), 08:45–10:50", note:"Escala de 2h05 en Roma.", status:"reservado"}
+    ]
+  },
+  {
+    date:"29 jul", weekday:"Miércoles", dayNum:"D02", region:"alemania",
+    title:"Frankfurt → Mannheim, reencuentro con Lu",
+    route:"Frankfurt (aeropuerto) → Mannheim",
+    items:[
+      {tag:"traslado", text:"Tren Frankfurt Airport → Mannheim Hauptbahnhof", note:"~40 min en tren directo desde la terminal.", map:"Mannheim Hauptbahnhof"},
+      {tag:"alojamiento", text:"Holiday Inn Mannheim City – Hauptbahnhof by IHG", note:"Reservado desde el 25/7 (Lu ya está alojada ahí).", map:"Holiday Inn Mannheim City Hauptbahnhof", status:"reservado", stay:true}
+    ]
+  },
+  {
+    date:"30 jul", weekday:"Jueves", dayNum:"D03", region:"alemania",
+    title:"Heidelberg",
+    route:"Mannheim → Heidelberg",
+    items:[
+      {tag:"paseo", text:"Castillo de Heidelberg y casco antiguo", note:"20–30 min en tren desde Mannheim. Uno de los paseos de un día más lindos de la zona.", map:"Heidelberg Castle"},
+      {tag:"paseo", text:"Puente Viejo y el Philosophenweg", map:"Heidelberg Old Bridge"},
+      {tag:"encuentro", text:"Vuelta a Mannheim para la noche"}
+    ]
+  },
+  {
+    date:"31 jul", weekday:"Viernes", dayNum:"D04", region:"alemania",
+    title:"Speyer o Worms",
+    route:"Mannheim → Speyer / Worms",
+    items:[
+      {tag:"paseo", text:"Catedral de Speyer (Patrimonio UNESCO)", note:"~20 min en tren desde Mannheim. Alternativa: Worms, con su propia catedral románica y menos turistas.", map:"Speyer Cathedral"},
+      {tag:"opción", text:"Technik Museum Speyer, si el interés es más técnico/aviación", map:"Technik Museum Speyer"},
+      {tag:"encuentro", text:"Vuelta a Mannheim para la noche"}
+    ]
+  },
+  {
+    date:"1 ago", weekday:"Sábado", dayNum:"D05", region:"alemania",
+    title:"Encuentro con Lea y familia",
+    route:"Mannheim → Affalterbach (~1h en auto/tren) → Frankfurt o Affalterbach",
+    items:[
+      {tag:"encuentro", text:"Día con Lea y su familia, amiga de Lu", note:"Viven en Affalterbach, cerca de Stuttgart.", map:"Affalterbach Germany"},
+      {tag:"alojamiento", text:"Noche en casa de Lea, Affalterbach", note:"Invitados por la familia de Lea.", map:"Affalterbach Germany", status:"reservado", stay:true},
+      {tag:"traslado", text:"Traslado en auto a Frankfurt con la familia de Lea", note:"Se ofrecieron a llevarlos al aeropuerto — resuelve el trayecto del día siguiente sin depender de tren ni auto propio.", status:"reservado"}
+    ]
+  },
+  {
+    date:"2 ago", weekday:"Domingo", dayNum:"D06", region:"copenhague",
+    title:"Llegada a Copenhague",
+    route:"Affalterbach → Frankfurt → Copenhague",
+    items:[
+      {tag:"traslado", text:"Affalterbach → aeropuerto de Frankfurt en auto, con la familia de Lea", note:"~2h15. Con el vuelo a las 19:45 hay margen de sobra — día tranquilo, sin apuro por la mañana.", status:"reservado"},
+      {tag:"vuelo", text:"SAS 1636, Frankfurt → Copenhague, 19:45–21:10", status:"reservado"},
+      {tag:"alojamiento", text:"CABINN City Hotel", note:"3 noches · Habitación \"Captain\" · Buffet de desayuno incluido. Mitchellsgade 14, Copenhagen. Check-in desde las 15:00. Reservado por Hotels.com — itinerario 72076234690382.", map:"CABINN City Hotel Copenhagen", status:"reservado", stay:true}
+    ]
+  },
+  {
+    date:"3 ago", weekday:"Lunes", dayNum:"D07", region:"copenhague",
+    title:"Copenhague a pie",
+    route:"Copenhague",
+    items:[
+      {tag:"paseo", text:"Nyhavn y el canal", map:"Nyhavn Copenhagen"},
+      {tag:"paseo", text:"Palacio de Amalienborg y el barrio de Frederiksstaden", map:"Amalienborg Palace"},
+      {tag:"paseo", text:"Canales en kayak o barco por Christianshavn", map:"Christianshavn Copenhagen"}
+    ]
+  },
+  {
+    date:"4 ago", weekday:"Martes", dayNum:"D08", region:"copenhague",
+    title:"Christiania o escapada a Louisiana",
+    route:"Copenhague (+ opcional Humlebæk)",
+    items:[
+      {tag:"paseo", text:"Freetown Christiania por la mañana", map:"Freetown Christiania"},
+      {tag:"opción", text:"Tarde: Museo Louisiana de arte moderno (35 min en tren desde CPH)", note:"Alternativa: cruzar a Malmö, Suecia (35 min en tren por el puente de Öresund).", map:"Louisiana Museum of Modern Art"}
+    ]
+  },
+  {
+    date:"5 ago", weekday:"Miércoles", dayNum:"D09", region:"bergen",
+    title:"Vuelo a Bergen",
+    route:"Copenhague → Bergen",
+    items:[
+      {tag:"vuelo", text:"SAS 2862, Copenhague → Bergen, 08:15–09:40", status:"reservado"},
+      {tag:"paseo", text:"Bryggen, el muelle hanseático", map:"Bryggen Bergen"},
+      {tag:"paseo", text:"Funicular Fløibanen hasta el mirador de Fløyen", map:"Fløibanen Bergen"},
+      {tag:"alojamiento", text:"Noche en Bergen", note:"2 noches (5 y 6/8), sin auto todavía.", map:"hoteles centro de Bergen", status:"pendiente", stay:true}
+    ]
+  },
+  {
+    date:"6 ago", weekday:"Jueves", dayNum:"D10", region:"bergen",
+    title:"Bergen y retiro del auto",
+    route:"Bergen",
+    items:[
+      {tag:"paseo", text:"Mercado de pescado (Fisketorget)", map:"Fisketorget Bergen"},
+      {tag:"paseo", text:"Teleférico Ulriken643 o Museo KODE", map:"Ulriken643"},
+      {tag:"auto", text:"Retirar auto de alquiler por la tarde", note:"Solo si eligen la Opción A o B del día siguiente (manejar hasta el Nærøyfjord). Si prefieren la Opción C (transporte público), el retiro del auto se pasa al 12/8 — ver Día 11.", status:"pendiente"}
+    ]
+  },
+  {
+    date:"7 ago", weekday:"Viernes", dayNum:"D11", region:"roadtrip",
+    title:"A los fiordos: Nærøyfjord",
+    optionsNote:"Tres formas de encarar este día — elegir una antes de reservar auto y alojamiento. Este tramo (Bergen-Voss-Gudvangen-Flåm) es justo el que sí tiene buen transporte público en Noruega.",
+    options:[
+      {
+        label:"Opción A · Dormir en Flåm (auto)",
+        route:"Bergen → Voss → Gudvangen → Flåm",
+        items:[
+          {tag:"ruta", text:"Bergen → Voss → Gudvangen en auto (~2h30)"},
+          {tag:"crucero", text:"Crucero Nærøyfjord, Gudvangen → Flåm", note:"Sale del muelle de Gudvangen, con varias salidas por día en temporada alta (agosto). Barco eléctrico (Future of the Fjords), 2h, cruza el Nærøyfjord — el brazo de fiordo más angosto de Europa, declarado Patrimonio UNESCO. Un solo tramo, deja el auto en Gudvangen (hay que coordinar cómo recuperarlo o dejarlo estacionado y volver por ruta al otro día).", map:"Gudvangen ferry terminal"},
+          {tag:"alojamiento", text:"Noche en Flåm", map:"hoteles en Flåm", status:"pendiente", stay:true}
+        ]
+      },
+      {
+        label:"Opción B · Dormir en Stalheim (auto)",
+        route:"Bergen → Voss → Gudvangen (crucero ida y vuelta) → Stalheim",
+        items:[
+          {tag:"ruta", text:"Bergen → Voss → Gudvangen en auto (~2h30)"},
+          {tag:"crucero", text:"Crucero Nærøyfjord ida y vuelta, Gudvangen → Flåm → Gudvangen", note:"Sale del muelle de Gudvangen (salida habitual 08:30), llega a Flåm ~10:30. El barco continúa después de vuelta a Gudvangen — se elige en qué horario de regreso subirse (13:30 o 16:00), dejando 3 a 5 horas libres en Flåm sin necesidad de manejar hasta ahí.", map:"Gudvangen ferry terminal"},
+          {tag:"tren", text:"Flåmsbana ida y vuelta", note:"Aprovechar el tiempo libre en Flåm para el tren de montaña (~2h incluida la parada en la cascada Kjosfossen), en vez de manejar hasta Flåm por separado.", map:"Flåm Railway station"},
+          {tag:"ruta", text:"Gudvangen → Stalheim (~10-15 min, subiendo la Stalheimskleiva)"},
+          {tag:"alojamiento", text:"Noche en Stalheim Hotel", note:"Vistas sobre el valle de Nærøydalen y la Stalheimskleiva, la carretera de curvas cerradas más empinada de Noruega. A 28 min en auto de Flåm.", map:"Stalheim Hotel", status:"pendiente", stay:true}
+        ]
+      },
+      {
+        label:"Opción C · Sin auto, en transporte público (Norway in a Nutshell)",
+        route:"Bergen → Voss → Gudvangen → Flåm → Myrdal → Bergen (ida y vuelta el mismo día)",
+        items:[
+          {tag:"tren", text:"Tren Bergen → Voss", note:"Ruta clásica del \"Norway in a Nutshell\", pensada para hacerse sin auto.", map:"Bergen train station"},
+          {tag:"bus", text:"Bus Voss → Gudvangen"},
+          {tag:"crucero", text:"Crucero Nærøyfjord, Gudvangen → Flåm", note:"Mismo crucero que en las otras opciones, sale del muelle de Gudvangen, 2h.", map:"Gudvangen ferry terminal"},
+          {tag:"tren", text:"Flåmsbana, Flåm → Myrdal", note:"Con parada en la cascada Kjosfossen.", map:"Flåm Railway station"},
+          {tag:"tren", text:"Tren Myrdal → Bergen"},
+          {tag:"alojamiento", text:"Noche en Bergen", note:"No hace falta auto este día. Ahorra 1 día completo de alquiler: se retira recién el 12/8 (ver Día 12).", map:"hoteles centro de Bergen", status:"pendiente", stay:true}
+        ]
+      }
+    ]
+  },
+  {
+    date:"8 ago", weekday:"Sábado", dayNum:"D12", region:"roadtrip",
+    title:"Miradores del Sognefjord",
+    route:"Flåm / Stalheim / Bergen → Aurland → Balestrand",
+    items:[
+      {tag:"nota", text:"Si eligieron la Opción C del día anterior (transporte público)", note:"Este es el día en que retiran el auto en Bergen. El tramo hasta Balestrand se alarga: Bergen → Voss → Gudvangen → Aurland → Balestrand, sumando el recorrido que en las opciones A/B ya se había hecho el día 7. Calcular ~5h de manejo en total ese día."},
+      {tag:"mirador", text:"Mirador de Stegastein", note:"Sale de la ruta hacia Aurland, 30 m colgado sobre el fiordo, a 650 m de altura. Si salen desde Stalheim, sumar ~15 min extra bajando a Gudvangen y cruzando el túnel hacia Aurland.", map:"Stegastein Viewpoint"},
+      {tag:"paseo", text:"Pueblo de Aurland", map:"Aurland Norway"},
+      {tag:"ruta", text:"Aurland → Balestrand bordeando el Sognefjord (~2h)"},
+      {tag:"alojamiento", text:"Noche en Balestrand", note:"Pueblo victoriano a orillas del fiordo.", map:"hoteles en Balestrand", status:"pendiente", stay:true}
+    ]
+  },
+  {
+    date:"9 ago", weekday:"Domingo", dayNum:"D13", region:"roadtrip",
+    title:"Hacia el Geirangerfjord",
+    optionsNote:"Tres formas de encarar la noche del Geirangerfjord — el pueblo de Geiranger es chico y muy turístico, así que hay alternativas.",
+    options:[
+      {
+        label:"Opción A · Dormir en Geiranger",
+        route:"Balestrand → Stryn → Hellesylt → Geiranger",
+        items:[
+          {tag:"ruta", text:"Balestrand → Stryn → Hellesylt (~3h30 en auto)"},
+          {tag:"ferry", text:"Ferry Hellesylt → Geiranger (con auto)", note:"Sale del muelle de Hellesylt. Recorre el Geirangerfjord por dentro, ~1h, con vistas a las cascadas Siete Hermanas y El Pretendiente desde el agua.", map:"Hellesylt ferry terminal"},
+          {tag:"alojamiento", text:"Noche en Geiranger", note:"El pueblo en sí es chico y recibe cruceros grandes — se llena en temporada alta.", map:"hoteles en Geiranger", status:"pendiente", stay:true}
+        ]
+      },
+      {
+        label:"Opción B · Dormir en Hellesylt",
+        route:"Balestrand → Stryn → Hellesylt",
+        items:[
+          {tag:"ruta", text:"Balestrand → Stryn → Hellesylt (~3h30 en auto)"},
+          {tag:"opción", text:"Crucero turístico ida y vuelta desde Hellesylt", note:"Alternativa para ver el fiordo ese mismo día sin cruzar todavía: entra hasta Geiranger, para unas horas en el pueblo y vuelve a Hellesylt en barco.", map:"Hellesylt ferry terminal"},
+          {tag:"alojamiento", text:"Noche en Hellesylt", note:"Pueblo más chico y tranquilo que Geiranger, y arrancan la mañana siguiente con el ferry ahí mismo.", map:"hoteles en Hellesylt", status:"pendiente", stay:true}
+        ]
+      },
+      {
+        label:"Opción C · Dormir en Valldal",
+        route:"Balestrand → Stryn → Hellesylt → Geiranger → Valldal",
+        items:[
+          {tag:"ruta", text:"Balestrand → Stryn → Hellesylt (~3h30 en auto)"},
+          {tag:"ferry", text:"Ferry Hellesylt → Geiranger (con auto)", note:"Recorre todo el fiordo, ~1h, con las cascadas Siete Hermanas y El Pretendiente.", map:"Hellesylt ferry terminal"},
+          {tag:"paseo", text:"Tiempo en el pueblo de Geiranger y mirador de camino", note:"Sin quedarse a dormir — solo la parada para conocer el pueblo y seguir viaje.", map:"Geiranger"},
+          {tag:"ruta", text:"Geiranger → Valldal (~1h, vía Eidsdal)", note:"Pueblo chico conocido por sus frutillas. Acorta el tramo a Trollstigen del día siguiente.", map:"Valldal Norway"},
+          {tag:"alojamiento", text:"Noche en Valldal", map:"hoteles en Valldal", status:"pendiente", stay:true}
+        ]
+      }
+    ]
+  },
+  {
+    date:"10 ago", weekday:"Lunes", dayNum:"D14", region:"roadtrip",
+    title:"Geirangerfjord, Trollstigen y Åndalsnes",
+    route:"Geiranger/Hellesylt/Valldal → Dalsnibba → Trollstigen → Åndalsnes",
+    items:[
+      {tag:"nota", text:"El arranque de este día depende de dónde durmieron la noche anterior", note:"Opción A: ya están en Geiranger. Opción B: cruzan esa mañana en el ferry con auto Hellesylt→Geiranger (ahí ven el fiordo), ~1h. Opción C: ya cruzaron el día anterior, así que el tramo hasta Trollstigen es más corto."},
+      {tag:"crucero", text:"Crucero por el Geirangerfjord", note:"Opcional si ya vieron el fiordo por el ferry con auto (Opción B). Sale del muelle de Geiranger. Fiordo UNESCO, mucho más vertical que el Nærøyfjord: cascadas Siete Hermanas y El Pretendiente cayendo directo al agua, y antiguas granjas abandonadas colgadas en la ladera.", map:"Geiranger ferry pier"},
+      {tag:"mirador", text:"Dalsnibba Skywalk", note:"Desvío en auto (con peaje) que sube por un camino de montaña hasta un mirador a 1500 m sobre el fiordo. Arriba hay una plataforma de observación (\"skywalk\") que sobresale sobre el precipicio, con vista al Geirangerfjord de punta a punta. Ida y vuelta por el mismo camino.", map:"Dalsnibba viewpoint"},
+      {tag:"ruta", text:"Geiranger → Trollstigen (tramo de acceso)", note:"~1h30 en total. No es solo manejo: primero baja de Geiranger, cruza en un ferry corto (Eidsdal-Linge, ~10-15 min) o bordea por Valldal según de dónde partan, y en el camino hay cascadas para parar — como la zona de Gudbrandsjuvet, una garganta angosta con pasarelas sobre el río, si el tiempo da. Recién al final de este tramo empieza la subida propiamente dicha."},
+      {tag:"mirador", text:"Trollstigen — las 11 curvas cerradas", note:"La carretera de las 11 curvas cerradas subiendo la montaña (Trollstigveien), con el auto zigzagueando literalmente en subida. Arriba hay un centro de visitantes con una plataforma mirador de diseño moderno (voladiza sobre el precipicio) desde donde se ve toda la serpentina de curvas recién subidas, más la cascada Stigfossen cayendo al lado del camino. Vale la pena bajarse del auto ahí arriba, no solo pasar manejando.", map:"Trollstigen"},
+      {tag:"ruta", text:"Trollstigen → Åndalsnes", note:"~30 min, bajada por el otro lado de la montaña (más suave que la subida), hasta el valle donde está Åndalsnes."},
+      {tag:"opción", text:"Romsdalsgondolen (teleférico) — la recomendada", note:"Sube al monte Nesaksla (708 m) hasta el mirador Rampestreken, una plataforma colgada sobre el pueblo. Corto (~10 min de subida) y sin esfuerzo — van sentados, no es caminata. Abierta todos los días en agosto, con horario extendido hasta ~22:00 en temporada alta — en agosto el sol se pone recién ~21:30, así que da tiempo de sobra.", map:"Romsdalsgondolen"},
+      {tag:"opción", text:"Mirador de Trollveggen (Troll Wall)", note:"Desvío corto en auto (10-15 min desde el pueblo) hasta un mirador con vista a la pared vertical de roca más alta de Europa (más de 1000 m de caída). No hay que caminar nada, se ve desde el estacionamiento/mirador junto a la ruta.", map:"Trollveggen viewpoint"},
+      {tag:"opción", text:"Paseo junto al río Rauma", note:"El pueblo en sí es chico — capital noruega del salmón, con el río pasando al lado. Caminata corta y llana por la costanera, sin pretensiones, para cerrar el día con calma.", map:"Åndalsnes"},
+      {tag:"opción", text:"Solo descansar", note:"Åndalsnes no tiene mucho más — es un pueblo de paso, sin vida nocturna. Si el día vino pesado, también es válido llegar, cenar tranquilo y dormir bien antes de Ålesund."},
+      {tag:"alojamiento", text:"Noche en Åndalsnes", map:"hoteles en Åndalsnes", status:"pendiente", stay:true},
+      {tag:"opción", text:"Alternativa: seguir hasta Molde en vez de Åndalsnes", note:"Solo vale la pena si al día siguiente van a hacer la Atlantic Road — deja mucho menos manejo ese día (ver Día 15). Cuesta ~1h15-1h30 más de manejo este día (Åndalsnes→Molde, de paso en la misma ruta, no es desvío nuevo). En Molde: subir al mirador de Varden (panorama de 222 picos, 10 min en auto) para el atardecer, y cenar con vista al fiordo en KØL Bar & Bistro, Naustbrygga o Restaurant Hav.", map:"hoteles en Molde", status:"pendiente", stay:true}
+    ]
+  },
+  {
+    date:"11 ago", weekday:"Martes", dayNum:"D15", region:"roadtrip",
+    title:"Ålesund",
+    route:"Åndalsnes → Ålesund",
+    items:[
+      {tag:"ruta", text:"Åndalsnes → Ålesund, directo", note:"~1h36 (100 km) por la E136, sin desvíos.", map:"Ålesund"},
+      {tag:"nota", text:"Atlantic Road: todavía sin decidir", note:"Dos formas de encararla según dónde hayan dormido la noche anterior — ver las dos opciones siguientes."},
+      {tag:"opción", text:"Atlantic Road saliendo desde Molde (si durmieron ahí)", note:"Mucho más corta: Molde queda sobre la misma Ruta 64 que lleva a Vevang, donde arranca el tramo de puentes hasta Kårvåg (Averøy). No tengo el tramo Molde→puente verificado en Maps como el de Åndalsnes, pero por posición en el mapa estimo ~30-45 min por lado — convendría chequearlo en Maps antes de decidir. Esta es la opción que tiene sentido si ya durmieron en Molde.", map:"Atlanterhavsveien"},
+      {tag:"opción", text:"Atlantic Road saliendo desde Åndalsnes (si durmieron ahí)", note:"Verificado en Maps: Åndalsnes → puente Storseisundet son 1h49 (la más rápida). Ida y vuelta desde Åndalsnes son ~3h40 solo de manejo al puente, antes de seguir a Ålesund — bastante más que saliendo desde Molde. En el tramo de puentes (8,3 km) los puntos son el puente Storseisundet (\"el puente a ningún lado\", por el efecto óptico), la pasarela flotante de Eldhusøya (700m, vista 360°) y el mirador de Askevågen.", map:"Atlanterhavsveien"},
+      {tag:"opción", text:"Alternativa más corta: mirador de Varden (Molde)", note:"Si quieren algo de altura y vista sin el desvío completo — panorama de 222 picos desde Molde, ~10 min en auto o 1h caminando desde el centro. Sigue siendo un desvío desde la ruta directa, pero mucho más corto que la Atlantic Road completa.", map:"Varden Molde"},
+      {tag:"paseo", text:"Centro art nouveau de Ålesund", note:"La ciudad se reconstruyó casi entera después de un incendio en 1904, y lo hizo en estilo art nouveau — por eso todo el centro tiene esa arquitectura uniforme de torretas, curvas y fachadas ornamentadas mirando al mar. Paseo a pie por calles como Kongens gate y Apotekergata.", map:"Ålesund town centre"},
+      {tag:"mirador", text:"Mirador de Aksla (Fjellstua)", note:"Se sube por una escalinata de 418 escalones (o en auto) hasta el mirador — la vista clásica de postal de Ålesund: la ciudad entera desplegada entre el mar y las islas, con las montañas de fondo.", map:"Fjellstua Aksla Ålesund"},
+      {tag:"opción", text:"Atlanterhavsparken (acuario)", note:"Opcional si les interesa, cerca del centro.", map:"Atlanterhavsparken Ålesund"},
+      {tag:"alojamiento", text:"Noche en Ålesund", map:"hoteles en Ålesund", status:"pendiente", stay:true}
+    ]
+  },
+  {
+    date:"12 ago", weekday:"Miércoles", dayNum:"D16", region:"roadtrip",
+    title:"Vuelta por Hjørundfjord y el glaciar",
+    route:"Ålesund → Norangsdalen → Byrkjelo → Skei → Lærdal (ferry) → Voss",
+    items:[
+      {tag:"mirador", text:"Valle de Norangsdalen, junto al Hjørundfjord", note:"Ruta menos transitada que la de ida, considerado uno de los fiordos más lindos y menos conocidos de Noruega. El Hjørundfjord tiene picos de hasta 1600m cayendo directo al agua, más vertical incluso que el Geirangerfjord, sin las multitudes. En el pueblo de Øye está el histórico Hotel Union Øye (1891), cuna del alpinismo británico en Noruega.", map:"Norangsdalen Norway"},
+      {tag:"paseo", text:"Glaciar Briksdalsbreen y lago Lovatnet", note:"Brazo del glaciar Jostedalsbreen, el más grande de la Europa continental. Caminata corta y llana (~1h30 ida y vuelta, ~3km). El glaciar se retiró bastante — ya no llega al lago desde 2010 — pero el valle sigue siendo muy lindo, y el lago Lovatnet es de un turquesa muy particular.", map:"Briksdalsbreen glacier"},
+      {tag:"opción", text:"Kaupanger Stave Church", note:"Desvío corto de camino al ferry cerca de Sogndal (~12 km). Iglesia de madera del año 1140, una de las mejor conservadas del país. Abierta 15 junio-15 agosto, 10:00-17:00 — justo dentro de temporada para esta fecha. Visita corta, 30-45 min.", map:"Kaupanger Stave Church"},
+      {tag:"opción", text:"Desvío a Fjærland", note:"Desde Skei: Museo Noruego del Glaciar y vistas de dos brazos del Jostedalsbreen (Boyabreen/Supphellebreen) sin caminata. Abierto en agosto de 9:00 a 19:00. Es un desvío aparte, no de paso.", map:"Fjærland Norway"},
+      {tag:"opción", text:"Astruptunet", note:"Casa-museo del pintor Nikolai Astrup, junto al lago Jølstravatnet, cerca de Skei.", map:"Astruptunet"},
+      {tag:"ruta", text:"Norangsdalen → Byrkjelo → Skei → Lærdal → Voss", note:"Vía la Ruta 60 hasta Byrkjelo, la E39 hasta Skei, y la Ruta 5 hasta Lærdal — ahí un ferry corto (sale 2 veces por hora, sin demoras largas) y el túnel de Lærdal (25 km) hasta Voss por la E16. Calcular ~5h30-6h30 en total; conviene confirmarlo en Maps más cerca de la fecha.", map:"Lærdal Norway"},
+      {tag:"alojamiento", text:"Noche en Voss", map:"hoteles en Voss", status:"pendiente", stay:true}
+    ]
+  },
+  {
+    date:"13 ago", weekday:"Jueves", dayNum:"D17", region:"oslo",
+    title:"Devolución del auto y salto a Oslo",
+    route:"Voss → Bergen → Torp → Oslo",
+    items:[
+      {tag:"ruta", text:"Voss → aeropuerto de Bergen (~1h20)"},
+      {tag:"auto", text:"Devolver auto: Europcar — Volvo EX30", note:"Jue 13/8, 8:00 · Bergen Airport, Flesland Meet and Greet. Confirmación: 1205060775 · Referencia: 46597840. Margen amplio antes del vuelo de las 10:50.", map:"Bergen Airport Flesland", status:"reservado"},
+      {tag:"vuelo", text:"Widerøe 411, Bergen → Oslo Torp, 10:50–11:45", status:"reservado"},
+      {tag:"traslado", text:"Torp → centro de Oslo en bus + tren", note:"El aeropuerto de Torp queda a ~110 km de Oslo, calcular 1h45–2h de traslado.", map:"Torp Airport Express bus"},
+      {tag:"alojamiento", text:"MediInn Hotel Oslo", note:"2 noches (13 y 14/8) · Habitación Doble Estándar · Desayuno incluido. Munchs Gate 5, St. Hanshaugen, 0130 Oslo · Tel. +47 90 28 64 92. Reservado por Booking.com — confirmación 6246.425.440 · PIN 0112. Sin reembolso si se cancela.", map:"MediInn Hotel Oslo", status:"reservado", stay:true}
+    ]
+  },
+  {
+    date:"14 ago", weekday:"Viernes", dayNum:"D18", region:"oslo",
+    title:"Oslo",
+    route:"Oslo",
+    items:[
+      {tag:"paseo", text:"Parque Vigeland", map:"Vigeland Park Oslo"},
+      {tag:"paseo", text:"Ópera de Oslo y el barrio de Bjørvika", map:"Oslo Opera House"},
+      {tag:"paseo", text:"Fortaleza de Akershus", map:"Akershus Fortress"}
+    ]
+  },
+  {
+    date:"15–16 ago", weekday:"Sábado a domingo", dayNum:"D19", region:"oslo",
+    title:"Oslo → Buenos Aires",
+    route:"Oslo → Frankfurt → Buenos Aires",
+    items:[
+      {tag:"vuelo", text:"Lufthansa LH863, Oslo (OSL) → Frankfurt (FRA), 16:45–18:50", status:"reservado"},
+      {tag:"vuelo", text:"Lufthansa LH510, Frankfurt (FRA) → Buenos Aires (EZE), sáb 15/8 21:40 → dom 16/8 06:25", note:"Escala de 2h50 en Frankfurt.", status:"reservado"}
+    ]
+  }
+];
+
+/* ======================================================================
+   ITINERARIO ALTERNATIVO CON STAVANGER — reemplaza puntualmente los días
+   D10 a D14 y D16 del array `days` de arriba cuando el switch está activo.
+   El resto de los días (D01-D09, D15, D17-D19) es idéntico en ambos casos.
+   ====================================================================== */
+const daysAltOverride = [
+  {
+    date:"5 ago", weekday:"Miércoles", dayNum:"D09", region:"bergen",
+    title:"Vuelo a Bergen",
+    route:"Copenhague → Bergen",
+    items:[
+      {tag:"vuelo", text:"SAS 2862, Copenhague → Bergen, 08:15–09:40", status:"reservado"},
+      {tag:"paseo", text:"Bryggen, el muelle hanseático", map:"Bryggen Bergen"},
+      {tag:"paseo", text:"Funicular Fløibanen hasta el mirador de Fløyen", map:"Fløibanen Bergen"},
+      {tag:"alojamiento", text:"Scandic Byparken", note:"1 noche · Habitación estándar, 1 cama Queen size · Desayuno incluido. Christiesgate 5-7, 5808 Bergen. Check-in desde las 16:00. Reservado por Hotels.com — itinerario 72077236622920. Pagado (US$273,59), tarifa no reembolsable.", map:"Scandic Byparken Bergen", status:"reservado", stay:true}
+    ]
+  },
+  {
+    date:"6 ago", weekday:"Jueves", dayNum:"D10", region:"stavanger",
+    title:"Bergen (mañana) → Bus a Stavanger",
+    route:"Bergen → Stavanger (Kystbussen)",
+    items:[
+      {tag:"paseo", text:"Mañana libre en Bergen", note:"Mercado de pescado, Ulriken643 o el museo KODE."},
+      {tag:"equipaje", text:"Dejar el grueso del equipaje guardado en Bergen", note:"Van 2 noches a Stavanger sin auto, conviene viajar liviano."},
+      {tag:"bus", text:"Kystbussen a Stavanger", note:"4h20 la ruta rápida (\"strake veien\"), hasta 5h25 la regular. Saliendo ~14:00-15:00 llegan entre las 19:00-20:00."},
+      {tag:"paseo", text:"Noche: Gamle Stavanger y Øvre Holmegate", note:"El barrio de casas blancas de madera, y la calle de fachadas de colores con bares — llegando de noche, alcanza para caminarlos y cenar.", map:"Gamle Stavanger"},
+      {tag:"alojamiento", text:"Scandic Stavanger City", note:"2 noches · Habitación con cama grande · Desayuno incluido. Reidar Berges gate 7, 4013 Stavanger · Tel. +47 21 61 52 02. Reservado por Booking.com — confirmación 6098.327.431 · PIN 4305. Sin reembolso si se cancela.", map:"Scandic Stavanger City", status:"reservado", stay:true}
+    ]
+  },
+  {
+    date:"7 ago", weekday:"Viernes", dayNum:"D11", region:"stavanger",
+    title:"Preikestolen",
+    route:"Stavanger → Tau → Preikestolen → Stavanger",
+    items:[
+      {tag:"ferry", text:"Ferry Stavanger → Tau", note:"~40 min. Hay combos de ferry+bus en un solo pasaje.", map:"Stavanger ferry terminal"},
+      {tag:"bus", text:"Bus Tau → inicio del sendero (Preikestolen Fjellstue)", note:"~30-40 min.", map:"Preikestolen Fjellstue"},
+      {tag:"trekking", text:"Caminata a Preikestolen", note:"3,8 km de subida (~2h) y otro tanto de bajada — calcular 4-5h de trekking puro. Arrancar temprano (7-8am) para volver con margen.", map:"Preikestolen"}
+    ]
+  },
+  {
+    date:"8 ago", weekday:"Sábado", dayNum:"D12", region:"roadtrip",
+    title:"Vuelta a Bergen y arranque del roadtrip",
+    route:"Stavanger → Bergen (bus) → Voss → Stalheim → Gudvangen (auto)",
+    items:[
+      {tag:"bus", text:"Kystbussen de vuelta a Bergen", note:"Salida temprano (~7:00-8:00 recomendado), llegada a la estación de bus en el centro ~11:45-13:00."},
+      {tag:"equipaje", text:"Retirar el equipaje guardado en Bergen"},
+      {tag:"traslado", text:"Centro de Bergen → Aeropuerto de Bergen (Flesland)", note:"El auto se retira en el aeropuerto, no en el centro — sumar este traslado (Bybanen, la línea de tranvía, ~30-45 min) antes de llegar al mostrador de Europcar. Con el retiro reservado a las 13:00, conviene salir de Stavanger lo más temprano posible para no llegar justos.", map:"Bergen Airport Flesland"},
+      {tag:"auto", text:"Retirar auto: Europcar — Volvo EX30 (eléctrico, AWD, 5 asientos)", note:"Sáb 8/8, 13:00 · Bergen Airport, Flesland Meet and Greet. Conductora principal: Luciana Hurtado. Confirmación: 1205060775 · Referencia: 46597840. Combustible: carga a carga (\"lleno a lleno\"). Kilometraje ilimitado. Total pagado: US$826,29 (0 NOK a pagar en mostrador). Cobertura AXA completa (franquicia daños US$1.841,35, franquicia robo US$1.841,35), responsabilidad civil, parabrisas/espejos/neumáticos, asistencia en carretera. Al ser eléctrico, hay que planificar paradas de carga en los tramos más largos del roadtrip (10/8 y 12/8 especialmente).", map:"Bergen Airport Flesland", status:"reservado"},
+      {tag:"ruta", text:"Bergen → Voss → mirador de Stalheim/Stalheimskleiva → Gudvangen", note:"El mirador está de paso, bajando hacia el fiordo — no suma desvío."},
+      {tag:"paseo", text:"Pueblo vikingo Njardarheimr", note:"A 150m del muelle de Gudvangen. 1,5-2h con tour guiado incluido (arquería, forja, gente que vive el rol vikingo todo el año). Cierra 18:00 en temporada.", map:"Njardarheimr Viking Village"},
+      {tag:"alojamiento", text:"Noche en Gudvangen", map:"Gudvangen Fjordtell", status:"pendiente", stay:true}
+    ]
+  },
+  {
+    date:"9 ago", weekday:"Domingo", dayNum:"D13", region:"roadtrip",
+    title:"Nærøyfjord y glaciar Briksdalsbreen",
+    route:"Gudvangen → Flåm → Aurland → Stegastein → Sogndal → Stryn → Briksdalsbreen",
+    items:[
+      {tag:"ruta", text:"Gudvangen → Flåm en auto (~10 min)"},
+      {tag:"crucero", text:"Crucero Nærøyfjord/Aurlandsfjord ida y vuelta desde Flåm", note:"~2h, ya sin apuro al haber dormido en Gudvangen.", map:"Flåm ferry terminal"},
+      {tag:"mirador", text:"Mirador de Stegastein", note:"Desvío desde Aurland, 30 m colgado sobre el fiordo a 650 m de altura.", map:"Stegastein Viewpoint"},
+      {tag:"ruta", text:"Aurland → Sogndal → Stryn", note:"Vía el ferry Fodnes–Mannheller (cruza el Sognefjord) y luego la Ruta 5. Balestrand queda afuera esta vez — ruta directa, sin el desvío por ferry a Vangsnes/Dragsvik. Llegada a Sogndal ~12:45, almuerzo hasta ~13:45, y de ahí a Stryn (14:00-15:30)."},
+      {tag:"opción", text:"Kaupanger Stave Church", note:"Opcional, prácticamente de paso al bajar del ferry en Kaupanger (~12 km de Sogndal). Es una \"stave church\" — una iglesia de madera noruega del año 1140, una de las mejor conservadas del país, con el interior casi intacto. Abierta 15 junio-15 agosto, 10:00-17:00. Visita corta, 30-45 min. También se puede hacer el día 16 (12/8), que vuelve a pasar por esta zona en el camino de regreso.", map:"Kaupanger Stave Church"},
+      {tag:"paseo", text:"Glaciar Briksdalsbreen", note:"Movido a esta tarde para no cargar el día siguiente: Stryn → Olden/Briksdalen (~30-40 min) → caminata corta y llana (~1h30, ~3km, pasando la cascada Kleivafossen) → vuelta a Stryn. El glaciar se retiró bastante — ya no llega al lago desde 2010 — pero el valle sigue siendo muy lindo. Llegada de vuelta a Stryn ~18:00-18:30.", map:"Briksdalsbreen glacier"},
+      {tag:"opción", text:"Si no hacen el glaciar: desvío a Fjærland", note:"Alternativa más liviana si prefieren no hacer la caminata a Briksdalsbreen — un desvío desde Skei con el Museo Noruego del Glaciar (abierto en agosto de 9:00 a 19:00) y vistas de dos brazos del Jostedalsbreen (Boyabreen/Supphellebreen) sin necesidad de caminar. Ojo: es un desvío aparte, no de paso — sumaría tiempo igual, solo que sin la caminata. También se puede hacer el día 16 (12/8), que vuelve a pasar cerca de Skei.", map:"Fjærland Norway"},
+      {tag:"opción", text:"No recomendado por el poco tiempo: Astruptunet", note:"La casa-museo del pintor Nikolai Astrup, cerca de Skei junto al lago Jølstravatnet. Es linda pero con lo que ya tiene el día (crucero + Stegastein + glaciar), no entra bien — la dejamos marcada por si en algún momento cambian el resto del plan. También se puede hacer el día 16 (12/8), que vuelve a pasar por Skei.", map:"Astruptunet"},
+      {tag:"alojamiento", text:"Noche en Stryn", map:"hoteles en Stryn", status:"pendiente", stay:true}
+    ]
+  },
+  {
+    date:"10 ago", weekday:"Lunes", dayNum:"D14", region:"roadtrip",
+    title:"Geirangerfjord y Trollstigen",
+    route:"Stryn → Hellesylt → Geiranger → Dalsnibba → Trollstigen → Åndalsnes",
+    items:[
+      {tag:"ruta", text:"Stryn → Hellesylt", note:"~50 min por la Ruta 60, con el paisaje del Nordfjord a la izquierda todo el trayecto."},
+      {tag:"ferry", text:"Ferry Hellesylt → Geiranger (con auto)", note:"No es un crucero turístico aparte, es el ferry regular que cruza con autos adentro — pero como recorre todo el largo del fiordo, funciona como el paseo en barco del día: se ven las cascadas Siete Hermanas (De Syv Søstre) y El Pretendiente (Friaren) desde el agua, además de las paredes del fiordo. Se suben con el auto adentro y bajan directo en Geiranger. ~1h05.", map:"Hellesylt ferry terminal"},
+      {tag:"paseo", text:"Pueblo de Geiranger", note:"Es chico — un puñado de cuadras junto al muelle, con negocios de suvenires y algún café. Alcanza para estirar las piernas y sacar fotos del fiordo desde el nivel del agua, mirando hacia atrás por donde vinieron.", map:"Geiranger"},
+      {tag:"mirador", text:"Dalsnibba Skywalk", note:"Desvío en auto (con peaje) que sube por un camino de montaña hasta un mirador a 1500 m sobre el fiordo — mucho más alto que cualquier vista desde el pueblo. Arriba hay una plataforma de observación (\"skywalk\") que sobresale sobre el precipicio, con vista al Geirangerfjord de punta a punta. Ida y vuelta por el mismo camino.", map:"Dalsnibba viewpoint"},
+      {tag:"ruta", text:"Geiranger → Trollstigen (tramo de acceso)", note:"~1h30 en total. No es solo manejo: primero baja de Geiranger, cruza en un ferry corto (Eidsdal-Linge, ~10-15 min) o bordea por Valldal según la ruta exacta, y en el camino hay cascadas para parar — como la zona de Gudbrandsjuvet, una garganta angosta con pasarelas sobre el río, si el tiempo da. Recién al final de este tramo empieza la subida propiamente dicha."},
+      {tag:"mirador", text:"Trollstigen — las 11 curvas cerradas", note:"Acá está la parte icónica: la carretera de las 11 curvas cerradas subiendo la montaña (Trollstigveien), con el auto zigzagueando literalmente en subida. Arriba hay un centro de visitantes con una plataforma mirador de diseño moderno (voladiza sobre el precipicio) desde donde se ve toda la serpentina de curvas recién subidas, más la cascada Stigfossen cayendo al lado del camino. Vale la pena bajarse del auto ahí arriba, no solo pasar manejando.", map:"Trollstigen"},
+      {tag:"ruta", text:"Trollstigen → Åndalsnes", note:"~30 min, bajada por el otro lado de la montaña (más suave que la subida), hasta el valle donde está Åndalsnes."},
+      {tag:"opción", text:"Romsdalsgondolen (teleférico) — la recomendada", note:"Sube al monte Nesaksla (708 m) hasta el mirador Rampestreken, una plataforma colgada sobre el pueblo. Corto (~10 min de subida) y sin esfuerzo — van sentados, no es caminata. Abierta todos los días en agosto, con horario extendido hasta ~22:00 en temporada alta — en agosto el sol se pone recién ~21:30, así que da tiempo de sobra. Desde arriba se ve el pueblo, el fiordo y buena parte del valle de Romsdalen.", map:"Romsdalsgondolen"},
+      {tag:"opción", text:"Mirador de Trollveggen (Troll Wall)", note:"Desvío corto en auto (10-15 min desde el pueblo) hasta un mirador con vista a la pared vertical de roca más alta de Europa (más de 1000 m de caída). No hay que caminar nada, se ve desde el estacionamiento/mirador junto a la ruta.", map:"Trollveggen viewpoint"},
+      {tag:"opción", text:"Paseo junto al río Rauma", note:"El pueblo en sí es chico — capital noruega del salmón, con el río pasando al lado. Caminata corta y llana por la costanera, sin pretensiones, para cerrar el día con calma.", map:"Åndalsnes"},
+      {tag:"opción", text:"Solo descansar", note:"Åndalsnes no tiene mucho más — es un pueblo de paso, sin vida nocturna. Si el día vino pesado, también es válido llegar, cenar tranquilo y dormir bien antes de Ålesund."},
+      {tag:"alojamiento", text:"Noche en Åndalsnes", map:"hoteles en Åndalsnes", status:"pendiente", stay:true},
+      {tag:"opción", text:"Alternativa: seguir hasta Molde en vez de Åndalsnes", note:"Solo vale la pena si al día siguiente van a hacer la Atlantic Road — deja mucho menos manejo ese día (ver Día 15). Cuesta ~1h15-1h30 más de manejo este día (Åndalsnes→Molde, de paso en la misma ruta, no es desvío nuevo), llevando el total del día a ~6h10-6h25 de tránsito. En Molde: subir al mirador de Varden (panorama de 222 picos, 10 min en auto) para el atardecer — en agosto el sol se pone ~21:30, llega bien — y cenar con vista al fiordo en KØL Bar & Bistro, Naustbrygga o Restaurant Hav.", map:"hoteles en Molde", status:"pendiente", stay:true}
+    ]
+  },
+  {
+    date:"12 ago", weekday:"Miércoles", dayNum:"D16", region:"roadtrip",
+    title:"Vuelta por Hjørundfjord",
+    route:"Ålesund → Norangsdalen → Byrkjelo → Skei → Lærdal (ferry) → Voss",
+    items:[
+      {tag:"mirador", text:"Valle de Norangsdalen, junto al Hjørundfjord", note:"Ruta menos transitada que la de ida, considerado uno de los fiordos más lindos y menos conocidos de Noruega.", map:"Norangsdalen Norway"},
+      {tag:"ruta", text:"Norangsdalen → Byrkjelo → Skei → Lærdal → Voss", note:"Vía la Ruta 60 hasta Byrkjelo, la E39 hasta Skei, y la Ruta 5 hasta Lærdal — ahí un ferry corto (sale 2 veces por hora, sin demoras largas) y el túnel de Lærdal (25 km) hasta Voss por la E16. Directo, sin la parada en Loen/glaciar — eso ya se vio el día 9. Calcular ~5h30-6h30 en total; conviene confirmarlo en Maps más cerca de la fecha.", map:"Lærdal Norway"},
+      {tag:"opción", text:"Kaupanger Stave Church", note:"Ya estaba marcada como opcional el día 9 (9/8) — se puede dejar para acá si ese día prefieren no parar. Prácticamente de paso al cruzar el ferry cerca de Sogndal (~12 km). Es una \"stave church\", iglesia de madera del año 1140, una de las mejor conservadas del país. Abierta 15 junio-15 agosto, 10:00-17:00. Visita corta, 30-45 min.", map:"Kaupanger Stave Church"},
+      {tag:"opción", text:"Desvío a Fjærland", note:"También opcional el día 9 (9/8), como alternativa al glaciar Briksdalsbreen. Acá aplica igual: desvío desde Skei con el Museo Noruego del Glaciar (abierto en agosto de 9:00 a 19:00) y vistas de dos brazos del Jostedalsbreen (Boyabreen/Supphellebreen), sin caminata. Es un desvío aparte, no de paso.", map:"Fjærland Norway"},
+      {tag:"opción", text:"Astruptunet", note:"Igual que las anteriores, ya estaba marcada como opcional (y no recomendada por tiempo) el día 9. La casa-museo del pintor Nikolai Astrup, junto al lago Jølstravatnet, cerca de Skei — de paso en este día también.", map:"Astruptunet"},
+      {tag:"alojamiento", text:"Noche en Voss", map:"hoteles en Voss", status:"pendiente", stay:true}
+    ]
+  }
+];
+
+const bookings = {
+  reservado:[
+    {d:"28–29 jul", t:"Vuelo Buenos Aires → Roma → Frankfurt (ITA AZ681 / AZ400)"},
+    {d:"25 jul–1 ago", t:"Holiday Inn Mannheim City – Hauptbahnhof"},
+    {d:"1–2 ago", t:"Noche en casa de Lea, Affalterbach (invitados)"},
+    {d:"2 ago", t:"Traslado Affalterbach → aeropuerto de Frankfurt, con la familia de Lea"},
+    {d:"2 ago", t:"Vuelo Frankfurt → Copenhague (SAS 1636)"},
+    {d:"2–5 ago", t:"CABINN City Hotel, Copenhague · 3 noches, con desayuno (Hotels.com, itin. 72076234690382)"},
+    {d:"5 ago", t:"Vuelo Copenhague → Bergen (SAS 2862)"},
+    {d:"13 ago", t:"Vuelo Bergen → Oslo Torp (Widerøe 411)"},
+    {d:"13–15 ago", t:"MediInn Hotel Oslo · 2 noches, con desayuno (Booking.com, conf. 6246.425.440 · PIN 0112)"},
+    {d:"15–16 ago", t:"Vuelo Oslo → Frankfurt → Buenos Aires (LH863 / LH510)"}
+  ],
+  pendiente:[
+    {d:"6 u 8–13 ago", t:"Auto de alquiler: 7 días si se maneja el Nærøyfjord (Opción A/B del día 11), o 6 días si se hace en transporte público (Opción C) — definir"},
+    {d:"5–7 ago", t:"Hotel en Bergen (2 o 3 noches según la opción del día 11)"},
+    {d:"7–8 ago", t:"Hotel en Flåm (A), Stalheim Hotel (B), o ninguno si vuelven a dormir en Bergen (C) — definir cuál"},
+    {d:"7 ago", t:"Tren+bus+barco Bergen↔Nærøyfjord↔Bergen (solo si eligen la Opción C, transporte público)"},
+    {d:"8–9 ago", t:"Hotel en Balestrand"},
+    {d:"9–10 ago", t:"Hotel en Geiranger (A), Hellesylt (B) o Valldal (C) — definir cuál"},
+    {d:"10–11 ago", t:"Hotel en Åndalsnes o en Molde — definir según si hacen la Atlantic Road"},
+    {d:"11–12 ago", t:"Hotel en Ålesund"},
+    {d:"12–13 ago", t:"Hotel en Voss"},
+    {d:"7 ago", t:"Crucero Nærøyfjord — un tramo (Opción A), ida y vuelta + Flåmsbana (Opción B), o incluido en el paquete de transporte público (Opción C)"},
+    {d:"9 ago", t:"Ferry Hellesylt → Geiranger"},
+    {d:"10 ago", t:"Crucero Geirangerfjord (opcional, si no vieron ya el fiordo por el ferry con auto)"},
+    {d:"11 ago", t:"Atlantic Road — todavía sin decidir si la hacen, y desde dónde (Molde o Åndalsnes)"},
+    {d:"13 ago", t:"Traslado Torp → Oslo (bus/tren)"}
+  ]
+};
+
+/* Pendientes específicos del itinerario alternativo con Stavanger.
+   El array "reservado" no cambia entre ambos itinerarios. */
+const pendienteAlt = [
+  {d:"6–8 ago", t:"Bus Kystbussen Bergen ↔ Stavanger (ida 6/8, vuelta 8/8)"},
+  {d:"7 ago", t:"Ferry + bus a Preikestolen (combo desde Stavanger)"},
+  {d:"8 ago", t:"Pueblo vikingo Njardarheimr (Gudvangen)"},
+  {d:"8–9 ago", t:"Gudvangen Fjordtell (u otro alojamiento en Gudvangen)"},
+  {d:"9–10 ago", t:"Hotel en Stryn"},
+  {d:"10–11 ago", t:"Hotel en Åndalsnes o en Molde — definir según si hacen la Atlantic Road"},
+  {d:"11–12 ago", t:"Hotel en Ålesund"},
+  {d:"12–13 ago", t:"Hotel en Voss"},
+  {d:"9 ago", t:"Crucero Nærøyfjord/Aurlandsfjord ida y vuelta desde Flåm"},
+  {d:"10 ago", t:"Ferry Hellesylt → Geiranger"},
+  {d:"11 ago", t:"Atlantic Road — todavía sin decidir si la hacen, y desde dónde (Molde o Åndalsnes)"},
+  {d:"13 ago", t:"Traslado Torp → Oslo (bus/tren)"}
+];
+
+/* Reservado adicional propio del itinerario alternativo (hoteles de Bergen/Stavanger
+   confirmados, que no existen en el itinerario original porque ahí esas noches
+   son distintas). Se suma a bookings.reservado solo cuando altMode está activo. */
+const reservadoAlt = [
+  {d:"5–6 ago", t:"Scandic Byparken, Bergen · 1 noche, con desayuno (Hotels.com, itin. 72077236622920)"},
+  {d:"6–8 ago", t:"Scandic Stavanger City · 2 noches, con desayuno (Booking.com, conf. 6098.327.431 · PIN 4305)"},
+  {d:"8–13 ago", t:"Auto Europcar, Volvo EX30 eléctrico · retiro y devolución en Bergen Airport (Flesland) (conf. 1205060775 · ref. 46597840)"}
+];
+
+/* ====================== RENDER ====================== */
+/* Fijado en modo alternativo (con Stavanger + Preikestolen), que es el que se está
+   reservando. El switch para volver al itinerario original quedó comentado más
+   abajo en el HTML — el código de AMBOS itinerarios (days, daysAltOverride,
+   bookings.pendiente, pendienteAlt, reservadoAlt) se mantiene intacto sin borrar
+   nada, por si en el futuro hace falta volver a comparar o consultar el original. */
+let altMode = true;
+
+function getActiveDays(){
+  if(!altMode) return days;
+  const overrideMap = {};
+  daysAltOverride.forEach(d => overrideMap[d.dayNum] = d);
+  return days.map(d => overrideMap[d.dayNum] || d);
+}
+
+function mapURL(name){
+  return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(name);
+}
+
+/* Si el item tiene "map", intenta envolver ese nombre dentro del texto con el
+   link. Si el nombre exacto no aparece en el texto, linkea el texto entero. */
+function linkedText(it){
+  if(!it.map) return it.text;
+  const href = mapURL(it.map);
+  if(it.text.includes(it.map)){
+    return it.text.replace(it.map, `<a href="${href}" target="_blank" rel="noopener">${it.map}</a>`);
+  }
+  return `<a href="${href}" target="_blank" rel="noopener">${it.text}</a>`;
+}
+
+function itemsHTML(items){
+  return items.map(it => `
+    <div class="item ${it.stay ? 'stay' : ''} ${it.tag === 'aviso' ? 'warn' : ''}">
+      <span class="tag ${it.tag === 'aviso' ? 'tag-warn' : ''}">${it.tag}</span>
+      <div class="body">
+        <div class="txt">${linkedText(it)}${it.status ? `<span class="status-pill ${it.status}">${it.status}</span>` : ''}</div>
+        ${it.note ? `<div class="note">${it.note}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderDays(){
+  const el = document.getElementById('route');
+  el.innerHTML = getActiveDays().map(d => `
+    <div class="day-card" data-day="${d.dayNum}" data-region="${d.region || ''}">
+      <div class="day-node">${d.dayNum}</div>
+      <div class="day-head">
+        <span class="day-date">${d.weekday} · ${d.date}</span>
+      </div>
+      <div class="day-title">${d.title}</div>
+      ${d.options ? `
+        <div class="options-note">${d.optionsNote || ''}</div>
+        ${d.options.map(op => `
+          <div class="option-block">
+            <div class="option-label">${op.label}</div>
+            <div class="day-route">${op.route}</div>
+            <div class="day-items">${itemsHTML(op.items)}</div>
+          </div>
+        `).join('')}
+      ` : `
+        <div class="day-route">${d.route}</div>
+        <div class="day-items">${itemsHTML(d.items)}</div>
+      `}
+    </div>
+  `).join('');
+}
+
+const REGION_LABELS = {
+  alemania:"Alemania", copenhague:"Copenhague", bergen:"Bergen", stavanger:"Stavanger", roadtrip:"Roadtrip fiordos", oslo:"Oslo"
+};
+
+function renderDayPicker(){
+  const activeDays = getActiveDays();
+  const el = document.getElementById('day-picker');
+  const buttons = ['<button class="day-pick-btn active" data-day="all">Todos</button>']
+    .concat(activeDays.map((d,i) => `<button class="day-pick-btn" data-day="${d.dayNum}" data-region="${d.region || ''}">Día ${i+1}</button>`));
+  el.innerHTML = buttons.join('');
+
+  const legend = document.getElementById('day-legend');
+  const regionsPresent = [...new Set(activeDays.map(d => d.region))];
+  legend.innerHTML = regionsPresent.filter(key => REGION_LABELS[key]).map(key =>
+    `<span><i style="background:var(--reg-${key})"></i>${REGION_LABELS[key]}</span>`
+  ).join('');
+
+  el.querySelectorAll('.day-pick-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      el.querySelectorAll('.day-pick-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.dataset.day;
+      document.querySelectorAll('.day-card').forEach(card => {
+        card.classList.toggle('hidden', target !== 'all' && card.dataset.day !== target);
+      });
+    });
+  });
+}
+
+function renderSummary(){
+  const cards = document.getElementById('summary-cards');
+  cards.innerHTML = altMode ? `
+    <div class="summary-card">
+      <h3>Mannheim (con Lu)</h3>
+      <ul><li>Llegada 29/7, hasta el 1/8</li><li>Day trips: Heidelberg, Speyer o Worms</li><li>Sábado: encuentro con Lea y familia cerca de Stuttgart</li></ul>
+    </div>
+    <div class="summary-card">
+      <h3>Copenhague</h3>
+      <ul><li>3 noches (2–5 ago)</li><li>A pie / transporte público</li><li>Nyhavn, Amalienborg, Christiania, Louisiana o Malmö</li></ul>
+    </div>
+    <div class="summary-card">
+      <h3>Bergen (1ra vez)</h3>
+      <ul><li>1 noche (5–6 ago)</li><li>Bryggen, Fløyen, mercado de pescado</li><li>Equipaje grande se queda guardado acá</li></ul>
+    </div>
+    <div class="summary-card">
+      <h3>Stavanger</h3>
+      <ul><li>2 noches (6–8 ago)</li><li>Sin auto, todo en bus/ferry</li><li>Preikestolen, Gamle Stavanger</li></ul>
+    </div>
+    <div class="summary-card">
+      <h3>Roadtrip fiordos</h3>
+      <ul><li>5 noches (8–13 ago)</li><li>5 días de auto de alquiler</li><li>Gudvangen, Nærøyfjord, glaciar Briksdalsbreen, Geirangerfjord, Trollstigen, Ålesund, Hjørundfjord</li></ul>
+    </div>
+    <div class="summary-card">
+      <h3>Oslo</h3>
+      <ul><li>2 noches (13–15 ago)</li><li>Llegada por Torp (bus/tren)</li><li>Vigeland, Ópera, Akershus</li></ul>
+    </div>
+  ` : `
+    <div class="summary-card">
+      <h3>Mannheim (con Lu)</h3>
+      <ul><li>Llegada 29/7, hasta el 1/8</li><li>Day trips: Heidelberg, Speyer o Worms</li><li>Sábado: encuentro con Lea y familia cerca de Stuttgart</li></ul>
+    </div>
+    <div class="summary-card">
+      <h3>Copenhague</h3>
+      <ul><li>3 noches (2–5 ago)</li><li>A pie / transporte público</li><li>Nyhavn, Amalienborg, Christiania, Louisiana o Malmö</li></ul>
+    </div>
+    <div class="summary-card">
+      <h3>Bergen &amp; fiordos, en auto</h3>
+      <ul><li>8 noches (5–13 ago)</li><li>7 días de auto de alquiler</li><li>Nærøyfjord, Sognefjord, Geirangerfjord, Trollstigen, Ålesund, Hjørundfjord</li></ul>
+    </div>
+    <div class="summary-card">
+      <h3>Oslo</h3>
+      <ul><li>2 noches (13–15 ago)</li><li>Llegada por Torp (bus/tren)</li><li>Vigeland, Ópera, Akershus</li></ul>
+    </div>
+  `;
+
+  const table = document.getElementById('summary-table');
+  table.innerHTML = getActiveDays().map(d => {
+    const items = d.items || (d.options ? d.options[0].items : []);
+    const route = d.route || (d.options ? d.options.map(o => o.label.split('·')[1].trim()).join(' / ') : '');
+    const highlight = items.find(it => it.tag !== 'vuelo' && it.tag !== 'ruta' && it.tag !== 'alojamiento') || items[0];
+    return `<tr>
+      <td class="mono">${d.weekday.slice(0,3)} ${d.date}</td>
+      <td>${route}</td>
+      <td>${highlight ? highlight.text : ''}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderBookings(){
+  const reservadoActivo = altMode ? bookings.reservado.concat(reservadoAlt) : bookings.reservado;
+  document.getElementById('list-reservado').innerHTML = reservadoActivo.map(b => `
+    <div class="book-item"><span>${b.t}</span><span class="d">${b.d}</span></div>
+  `).join('');
+  const pendienteActivo = altMode ? pendienteAlt : bookings.pendiente;
+  document.getElementById('list-pendiente').innerHTML = pendienteActivo.map(b => `
+    <div class="book-item"><span>${b.t}</span><span class="d">${b.d}</span></div>
+  `).join('');
+}
+
+renderDays();
+renderDayPicker();
+renderSummary();
+renderBookings();
+
+/* El switch #alt-toggle está comentado en el HTML (ver más arriba), así que este
+   guard evita que tire error al no encontrar el elemento. Si en algún momento se
+   descomenta el switch, este bloque vuelve a funcionar solo. */
+const altToggleEl = document.getElementById('alt-toggle');
+if (altToggleEl) {
+  altToggleEl.addEventListener('change', (e) => {
+    altMode = e.target.checked;
+    renderDays();
+    renderDayPicker();
+    renderSummary();
+    renderBookings();
+  });
+}
+
+/* ====================== TOGGLE VIEWS ====================== */
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('view-' + btn.dataset.view).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
