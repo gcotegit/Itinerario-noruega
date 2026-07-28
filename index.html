@@ -447,7 +447,6 @@ const days = [
       {tag:"opción", text:"Mannheim tranquilo, sin esfuerzo", note:"Dado el cansancio del vuelo (~17h puerta a puerta), lo más liviano: Wasserturm → Friedrichsplatz → Die Quadrate (el centro histórico sin nombres de calle, solo cuadrícula de letras y números) → Mannheimer Schloss. Nada que requiera trenes ni planificación.", map:"Wasserturm Mannheim"},
       {tag:"opción", text:"Schwetzingen", note:"~15-20 min en tren desde Mannheim Hauptbahnhof, muy fácil. Palacio y Jardines de Schwetzingen — uno de los conjuntos de jardines barrocos/neoclásicos más importantes de Europa, con una mezquita ornamental como capricho arquitectónico del siglo XVIII. Paseo tranquilo, sin caminatas largas. No se pisa con Heidelberg (30/7) ni con Speyer/Worms (31/7).", map:"Schwetzingen Palace"},
       {tag:"opción", text:"Frankfurt (guardando el equipaje)", note:"Viable — hay lockers en el aeropuerto y en la Hauptbahnhof. Römerberg (la plaza medieval), el Main Tower (mirador) o el Museumsufer (costanera de museos). El costo real: alarga bastante el día de llegada, ya cansados del vuelo, antes de tomar el tren a Mannheim (35-40 min en ICE)."},
-      {tag:"encuentro", text:"Reencuentro con Lu a la noche", note:"Ella termina de trabajar y se ven para cenar."},
       {tag:"alojamiento", text:"Holiday Inn Mannheim City – Hauptbahnhof by IHG", note:"Reservado desde el 25/7 (Lu ya está alojada ahí).", map:"Holiday Inn Mannheim City Hauptbahnhof", status:"reservado", stay:true}
     ]
   },
@@ -724,7 +723,7 @@ const daysAltOverride = [
     items:[
       {tag:"paseo", text:"Mañana libre en Bergen", note:"Mercado de pescado, Ulriken643 o el museo KODE."},
       {tag:"equipaje", text:"Dejar el grueso del equipaje guardado en Bergen", note:"Van 2 noches a Stavanger sin auto, conviene viajar liviano."},
-      {tag:"bus", text:"Kystbussen a Stavanger", note:"4h20 la ruta rápida (\"strake veien\"), hasta 5h25 la regular. Saliendo ~14:00-15:00 llegan entre las 19:00-20:00."},
+      {tag:"bus", text:"FlixBus, Bergen Busstasjon → Stavanger bussterminal", note:"14:15 → 19:00 (4h45). Ruta 652. Andén N en Bergen (Fjøsangerveien 4) → Andén 7 en Stavanger (Jernbaneveien 9). Reserva 337 909 2787. Asientos: Gabriel 16B, Luciana 16A. Aviso de la empresa: hay trasbordo de bus en la estación de Kristiansand, hay que bajar y pasar al bus de conexión indicado.", status:"reservado"},
       {tag:"paseo", text:"Noche: Gamle Stavanger y Øvre Holmegate", note:"El barrio de casas blancas de madera, y la calle de fachadas de colores con bares — llegando de noche, alcanza para caminarlos y cenar.", map:"Gamle Stavanger"},
       {tag:"alojamiento", text:"Scandic Stavanger City", note:"2 noches · Habitación con cama grande · Desayuno incluido. Reidar Berges gate 7, 4013 Stavanger · Tel. +47 21 61 52 02. Reservado por Booking.com — confirmación 6098.327.431 · PIN 4305. Sin reembolso si se cancela.", map:"Scandic Stavanger City", status:"reservado", stay:true}
     ]
@@ -744,9 +743,10 @@ const daysAltOverride = [
     title:"Vuelta a Bergen y arranque del roadtrip",
     route:"Stavanger → Bergen (bus) → Voss → Stalheim → Gudvangen (auto)",
     items:[
-      {tag:"bus", text:"Kystbussen de vuelta a Bergen", note:"Salida temprano (~7:00-8:00 recomendado), llegada a la estación de bus en el centro ~11:45-13:00."},
+      {tag:"bus", text:"FlixBus, Stavanger bussterminal → Bergen Busstasjon", note:"07:50 → 12:30 (4h40). Ruta 652. Andén 7 en Stavanger → Andén N en Bergen. Misma reserva 337 909 2787. Asientos: Gabriel 16A, Luciana 16B.", status:"reservado"},
+      {tag:"aviso", text:"Tiempo ajustado con el retiro del auto", note:"El bus llega 12:30 al centro, y el auto se retira 13:00 en el aeropuerto. Contando bajar del bus, retirar el equipaje guardado y el traslado en Bybanen hasta Flesland (~30-45 min), es probable que lleguen 15-30 min después de la hora reservada. No debería ser grave (es \"Meet and Greet\", suele haber flexibilidad), pero si se complica, conviene avisarle a Europcar apenas bajen del bus."},
       {tag:"equipaje", text:"Retirar el equipaje guardado en Bergen"},
-      {tag:"traslado", text:"Centro de Bergen → Aeropuerto de Bergen (Flesland)", note:"El auto se retira en el aeropuerto, no en el centro — sumar este traslado (Bybanen, la línea de tranvía, ~30-45 min) antes de llegar al mostrador de Europcar. Con el retiro reservado a las 13:00, conviene salir de Stavanger lo más temprano posible para no llegar justos.", map:"Bergen Airport Flesland"},
+      {tag:"traslado", text:"Centro de Bergen → Aeropuerto de Bergen (Flesland)", note:"El auto se retira en el aeropuerto, no en el centro — sumar este traslado (Bybanen, la línea de tranvía, ~30-45 min) antes de llegar al mostrador de Europcar.", map:"Bergen Airport Flesland"},
       {tag:"auto", text:"Retirar auto: Europcar — Volvo EX30 (eléctrico, AWD, 5 asientos)", note:"Sáb 8/8, 13:00 · Bergen Airport, Flesland Meet and Greet. Conductora principal: Luciana Hurtado. Confirmación: 1205060775 · Referencia: 46597840. Combustible: carga a carga (\"lleno a lleno\"). Kilometraje ilimitado. Total pagado: US$826,29 (0 NOK a pagar en mostrador). Cobertura AXA completa (franquicia daños US$1.841,35, franquicia robo US$1.841,35), responsabilidad civil, parabrisas/espejos/neumáticos, asistencia en carretera. Al ser eléctrico, hay que planificar paradas de carga en los tramos más largos del roadtrip (10/8 y 12/8 especialmente).", map:"Bergen Airport Flesland", status:"reservado"},
       {tag:"ruta", text:"Bergen → Voss → mirador de Stalheim/Stalheimskleiva → Gudvangen", note:"El mirador está de paso, bajando hacia el fiordo — no suma desvío."},
       {tag:"paseo", text:"Pueblo vikingo Njardarheimr", note:"A 150m del muelle de Gudvangen. 1,5-2h con tour guiado incluido (arquería, forja, gente que vive el rol vikingo todo el año). Cierra 18:00 en temporada.", map:"Njardarheimr Viking Village"},
@@ -838,7 +838,6 @@ const bookings = {
 /* Pendientes específicos del itinerario alternativo con Stavanger.
    El array "reservado" no cambia entre ambos itinerarios. */
 const pendienteAlt = [
-  {d:"6–8 ago", t:"Bus Kystbussen Bergen ↔ Stavanger (ida 6/8, vuelta 8/8)", url:"https://www.flixbus.es/"},
   {d:"7 ago", t:"Ferry + bus a Preikestolen (combo desde Stavanger)", url:"https://gofjords.com/experiences/hiking/stavanger/preikestolen-express-bus-round-trip/"},
   {d:"8 ago", t:"Pueblo vikingo Njardarheimr (Gudvangen)"},
   {d:"8–9 ago", t:"Gudvangen Fjordtell (u otro alojamiento en Gudvangen)"},
@@ -859,6 +858,7 @@ const pendienteAlt = [
 const reservadoAlt = [
   {d:"5–6 ago", t:"Scandic Byparken, Bergen · 1 noche, con desayuno (Hotels.com, itin. 72077236622920)"},
   {d:"6–8 ago", t:"Scandic Stavanger City · 2 noches, con desayuno (Booking.com, conf. 6098.327.431 · PIN 4305)"},
+  {d:"6 y 8 ago", t:"FlixBus Bergen ↔ Stavanger, ida y vuelta (reserva 337 909 2787)", url:"https://www.flixbus.es/"},
   {d:"8–13 ago", t:"Auto Europcar, Volvo EX30 eléctrico · retiro y devolución en Bergen Airport (Flesland) (conf. 1205060775 · ref. 46597840)"}
 ];
 
@@ -963,7 +963,7 @@ function renderSummary(){
   const cards = document.getElementById('summary-cards');
   cards.innerHTML = altMode ? `
     <div class="summary-card">
-      <h3>Mannheim (con Lu)</h3>
+      <h3>Mannheim</h3>
       <ul><li>Llegada 29/7, hasta el 1/8</li><li>Day trips: Heidelberg, Speyer o Worms</li><li>Sábado: encuentro con Lea y familia cerca de Stuttgart</li></ul>
     </div>
     <div class="summary-card">
@@ -988,7 +988,7 @@ function renderSummary(){
     </div>
   ` : `
     <div class="summary-card">
-      <h3>Mannheim (con Lu)</h3>
+      <h3>Mannheim</h3>
       <ul><li>Llegada 29/7, hasta el 1/8</li><li>Day trips: Heidelberg, Speyer o Worms</li><li>Sábado: encuentro con Lea y familia cerca de Stuttgart</li></ul>
     </div>
     <div class="summary-card">
