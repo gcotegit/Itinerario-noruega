@@ -906,6 +906,7 @@ const reservadoAlt = [
    Para agregar un gasto: copiar una línea y completar los campos.
    ====================================================================== */
 const gastos = [
+  {fecha:"28 jul", concepto:"Transporte Manuel Tienda León", monto:172000, moneda:"ARS", pagadoPor:"lu", compartido:false, paraQuien:"gabriel"},
   {fecha:"13 ago", concepto:"Vuelo interno Bergen → Oslo Torp (2 pasajeros, CheapOair, conf. 94795660)", monto:1096.80, moneda:"USD", pagadoPor:"lu", compartido:true},
   {fecha:"28 jul y 15 ago", concepto:"Vuelos Buenos Aires → Frankfurt (ida) y Oslo → Buenos Aires (vuelta)", monto:1478.97, moneda:"USD", pagadoPor:"gabriel", compartido:true, nota:"Cubre los dos tramos internacionales de Gabriel. Lu le paga la mitad a Gabriel porque a ella se lo reintegra la empresa."},
   {fecha:"2–5 ago", concepto:"CABINN City Hotel, Copenhague (3 noches)", monto:4050.00, moneda:"DKK", pagadoPor:"gabriel", compartido:true},
@@ -1104,31 +1105,46 @@ function renderPresupuesto(){
       <td class="mono">${g.fecha}</td>
       <td>${g.concepto}${g.nota ? `<div class="note" style="margin-top:3px;">${g.nota}</div>` : ''}</td>
       <td><span class="status-pill ${g.pagadoPor}">${g.pagadoPor === 'gabriel' ? 'Gabriel' : 'Lu'}</span></td>
-      <td><span class="status-pill ${g.compartido ? 'compartido' : 'personal'}">${g.compartido ? 'Compartido' : 'Personal'}</span></td>
+      <td><span class="status-pill ${g.compartido ? 'compartido' : (g.paraQuien && g.paraQuien !== g.pagadoPor ? 'personal' : 'personal')}">${g.compartido ? 'Compartido' : (g.paraQuien && g.paraQuien !== g.pagadoPor ? `100% ${g.paraQuien === 'gabriel' ? 'Gabriel' : 'Lu'}` : 'Personal')}</span></td>
       <td class="mono">${fmtMonto(g.monto)} ${g.moneda}</td>
     </tr>
   `).join('');
 
-  // Balance por moneda: solo gastos compartidos entran en la cuenta a dividir.
+  // Balance por moneda.
+  // - compartido:true → se divide 50/50 entre gabriel y lu.
+  // - compartido:false sin paraQuien (o paraQuien = pagadoPor) → gasto personal de quien pagó, no genera deuda.
+  // - compartido:false con paraQuien distinto de pagadoPor → quien pagó cubrió el 100% del gasto de la otra
+  //   persona (reembolso completo, no se divide a la mitad).
   const monedas = {};
-  gastos.filter(g => g.compartido).forEach(g => {
-    if(!monedas[g.moneda]) monedas[g.moneda] = {gabriel:0, lu:0};
-    monedas[g.moneda][g.pagadoPor] += g.monto;
+  function getMoneda(m){
+    if(!monedas[m]) monedas[m] = {gabrielCompartido:0, luCompartido:0, reembolsos:[], diferencia:0};
+    return monedas[m];
+  }
+  gastos.forEach(g => {
+    const m = getMoneda(g.moneda);
+    if(g.compartido){
+      if(g.pagadoPor === 'gabriel'){ m.gabrielCompartido += g.monto; m.diferencia += g.monto/2; }
+      else { m.luCompartido += g.monto; m.diferencia -= g.monto/2; }
+    } else if(g.paraQuien && g.paraQuien !== g.pagadoPor){
+      m.reembolsos.push(g);
+      if(g.pagadoPor === 'lu'){ m.diferencia -= g.monto; } // Gabriel le debe el 100% a Lu
+      else { m.diferencia += g.monto; } // Lu le debe el 100% a Gabriel
+    }
   });
-  const personalGabriel = gastos.filter(g => !g.compartido && g.pagadoPor === 'gabriel');
+  const personalGabriel = gastos.filter(g => !g.compartido && g.pagadoPor === 'gabriel' && (!g.paraQuien || g.paraQuien === 'gabriel'));
 
   const balanceEl = document.getElementById('budget-balance');
   let cards = Object.entries(monedas).map(([moneda, v]) => {
-    const total = v.gabriel + v.lu;
-    const mitad = total / 2;
-    const diferencia = v.gabriel - mitad; // positivo: Lu le debe a Gabriel; negativo: Gabriel le debe a Lu
+    const diferencia = v.diferencia; // positivo: Lu le debe a Gabriel; negativo: Gabriel le debe a Lu
     const quien = diferencia > 0.01 ? 'Lu le debe a Gabriel' : (diferencia < -0.01 ? 'Gabriel le debe a Lu' : 'Están a mano');
+    const reembolsosTxt = v.reembolsos.map(r => `<li>${r.concepto}: ${fmtMonto(r.monto)} (100% ${r.paraQuien === 'gabriel' ? 'de Gabriel' : 'de Lu'}, pagado por ${r.pagadoPor === 'lu' ? 'Lu' : 'Gabriel'})</li>`).join('');
     return `
       <div class="summary-card">
         <h3>Balance en ${moneda}</h3>
         <ul>
-          <li>Pagó Gabriel (compartido): ${fmtMonto(v.gabriel)}</li>
-          <li>Pagó Lu (compartido): ${fmtMonto(v.lu)}</li>
+          ${v.gabrielCompartido ? `<li>Pagó Gabriel (compartido): ${fmtMonto(v.gabrielCompartido)}</li>` : ''}
+          ${v.luCompartido ? `<li>Pagó Lu (compartido): ${fmtMonto(v.luCompartido)}</li>` : ''}
+          ${reembolsosTxt}
           <li><strong>${quien}${Math.abs(diferencia) > 0.01 ? ': ' + fmtMonto(Math.abs(diferencia)) : ''}</strong></li>
         </ul>
       </div>
