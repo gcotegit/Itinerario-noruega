@@ -284,6 +284,10 @@
   }
   .status-pill.reservado{ background:var(--ok-light); color:var(--ok); }
   .status-pill.pendiente{ background:var(--rust-light); color:var(--rust); }
+  .status-pill.gabriel{ background:var(--reg-copenhague-light); color:var(--reg-copenhague); margin-left:0; }
+  .status-pill.lu{ background:var(--reg-oslo-light); color:var(--reg-oslo); margin-left:0; }
+  .status-pill.compartido{ background:var(--tealLight); color:var(--teal-dk); margin-left:0; }
+  .status-pill.personal{ background:var(--cream); color:var(--inkSoft); margin-left:0; border:1px solid var(--line); }
 
   /* ---------- RESUMEN VIEW ---------- */
   .summary-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:30px; }
@@ -347,6 +351,7 @@
   <button class="toggle-btn active" data-view="dias">Día a día</button>
   <button class="toggle-btn" data-view="resumen">Resumen del viaje</button>
   <button class="toggle-btn" data-view="reservas">Reservado / Pendiente</button>
+  <button class="toggle-btn" data-view="presupuesto">Presupuesto</button>
 </div>
 
 <!--
@@ -408,6 +413,22 @@
         <h3><span class="dot pend"></span> Pendiente</h3>
         <div class="book-list" id="list-pendiente"></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= VISTA PRESUPUESTO ================= -->
+  <section id="view-presupuesto" class="view">
+    <p class="section-title">Presupuesto y rendición de cuentas</p>
+    <p class="section-note">Gastos compartidos (para dividir entre Gabriel y Lu) y gastos personales de Gabriel (solo informativos, no se dividen). Los gastos de Lu para ella no se cargan acá. Los montos quedan en su moneda original — no se convierten entre sí.</p>
+
+    <div class="summary-grid" id="budget-balance"></div>
+
+    <p class="section-title" style="margin-top:26px;">Detalle de gastos</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Fecha</th><th>Concepto</th><th>Pagó</th><th>¿Compartido?</th><th>Monto</th></tr></thead>
+        <tbody id="budget-table"></tbody>
+      </table>
     </div>
   </section>
 
@@ -875,6 +896,24 @@ const reservadoAlt = [
   {d:"8–13 ago", t:"Auto Europcar, Volvo EX30 eléctrico · retiro y devolución en Bergen Airport (Flesland) (conf. 1205060775 · ref. 46597840)"}
 ];
 
+/* ======================================================================
+   PRESUPUESTO — gastos para rendir cuentas entre Gabriel y Lu.
+   Cada gasto: fecha, concepto, quién pagó ('gabriel' o 'lu'), si es
+   compartido (se divide a la mitad) o personal de quien pagó (no se
+   divide, solo informativo). Los gastos de Lu para ella sola NO se
+   cargan acá. Los montos quedan en su moneda original — el cálculo de
+   balance se hace por moneda, sin convertir entre sí.
+   Para agregar un gasto: copiar una línea y completar los campos.
+   ====================================================================== */
+const gastos = [
+  {fecha:"2–5 ago", concepto:"CABINN City Hotel, Copenhague (3 noches)", monto:4050.00, moneda:"DKK", pagadoPor:"gabriel", compartido:true},
+  {fecha:"5–6 ago", concepto:"Scandic Byparken, Bergen (1 noche)", monto:273.59, moneda:"USD", pagadoPor:"gabriel", compartido:true},
+  {fecha:"6–8 ago", concepto:"Scandic Stavanger City (2 noches)", monto:276.00, moneda:"USD", pagadoPor:"gabriel", compartido:true},
+  {fecha:"6 y 8 ago", concepto:"FlixBus Bergen ↔ Stavanger (ida y vuelta, 2 pasajeros)", monto:111.95, moneda:"EUR", pagadoPor:"gabriel", compartido:true},
+  {fecha:"8–13 ago", concepto:"Auto Europcar, Volvo EX30 eléctrico", monto:826.29, moneda:"USD", pagadoPor:"gabriel", compartido:true},
+  {fecha:"13–15 ago", concepto:"MediInn Hotel Oslo (2 noches)", monto:575497, moneda:"$ (verificar cuál — el comprobante no aclara)", pagadoPor:"gabriel", compartido:true}
+];
+
 /* ====================== RENDER ====================== */
 /* Fijado en modo alternativo (con Stavanger + Preikestolen), que es el que se está
    reservando. El switch para volver al itinerario original quedó comentado más
@@ -1042,10 +1081,66 @@ function renderBookings(){
   `).join('');
 }
 
+function fmtMonto(n){
+  return n.toLocaleString('es-AR', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+function renderPresupuesto(){
+  // Tabla de detalle
+  const tbody = document.getElementById('budget-table');
+  tbody.innerHTML = gastos.map(g => `
+    <tr>
+      <td class="mono">${g.fecha}</td>
+      <td>${g.concepto}</td>
+      <td><span class="status-pill ${g.pagadoPor}">${g.pagadoPor === 'gabriel' ? 'Gabriel' : 'Lu'}</span></td>
+      <td><span class="status-pill ${g.compartido ? 'compartido' : 'personal'}">${g.compartido ? 'Compartido' : 'Personal'}</span></td>
+      <td class="mono">${fmtMonto(g.monto)} ${g.moneda}</td>
+    </tr>
+  `).join('');
+
+  // Balance por moneda: solo gastos compartidos entran en la cuenta a dividir.
+  const monedas = {};
+  gastos.filter(g => g.compartido).forEach(g => {
+    if(!monedas[g.moneda]) monedas[g.moneda] = {gabriel:0, lu:0};
+    monedas[g.moneda][g.pagadoPor] += g.monto;
+  });
+  const personalGabriel = gastos.filter(g => !g.compartido && g.pagadoPor === 'gabriel');
+
+  const balanceEl = document.getElementById('budget-balance');
+  let cards = Object.entries(monedas).map(([moneda, v]) => {
+    const total = v.gabriel + v.lu;
+    const mitad = total / 2;
+    const diferencia = v.gabriel - mitad; // positivo: Lu le debe a Gabriel; negativo: Gabriel le debe a Lu
+    const quien = diferencia > 0.01 ? 'Lu le debe a Gabriel' : (diferencia < -0.01 ? 'Gabriel le debe a Lu' : 'Están a mano');
+    return `
+      <div class="summary-card">
+        <h3>Balance en ${moneda}</h3>
+        <ul>
+          <li>Pagó Gabriel (compartido): ${fmtMonto(v.gabriel)}</li>
+          <li>Pagó Lu (compartido): ${fmtMonto(v.lu)}</li>
+          <li><strong>${quien}${Math.abs(diferencia) > 0.01 ? ': ' + fmtMonto(Math.abs(diferencia)) : ''}</strong></li>
+        </ul>
+      </div>
+    `;
+  }).join('');
+
+  if(personalGabriel.length){
+    cards += `
+      <div class="summary-card">
+        <h3>Gastos personales de Gabriel</h3>
+        <ul>${personalGabriel.map(g => `<li>${g.concepto}: ${fmtMonto(g.monto)} ${g.moneda}</li>`).join('')}</ul>
+      </div>
+    `;
+  }
+
+  balanceEl.innerHTML = cards || '<p class="section-note">Sin gastos cargados todavía.</p>';
+}
+
 renderDays();
 renderDayPicker();
 renderSummary();
 renderBookings();
+renderPresupuesto();
 
 /* El switch #alt-toggle está comentado en el HTML (ver más arriba), así que este
    guard evita que tire error al no encontrar el elemento. Si en algún momento se
