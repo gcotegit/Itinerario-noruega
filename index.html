@@ -1140,7 +1140,7 @@ function renderPresupuesto(){
       <td>${g.concepto}${g.nota ? `<div class="note" style="margin-top:3px;">${g.nota}</div>` : ''}</td>
       <td class="mono">${g.rubro || ''}</td>
       <td><span class="status-pill ${g.pagadoPor}">${g.pagadoPor === 'gabriel' ? 'Gabriel' : 'Lu'}</span></td>
-      <td><span class="status-pill ${g.compartido ? 'compartido' : (g.paraQuien && g.paraQuien !== g.pagadoPor ? 'personal' : 'personal')}">${g.compartido ? 'Compartido' : (g.paraQuien && g.paraQuien !== g.pagadoPor ? `100% ${g.paraQuien === 'gabriel' ? 'Gabriel' : 'Lu'}` : 'Personal')}</span></td>
+      <td><span class="status-pill ${g.compartido ? 'compartido' : 'personal'}">${g.compartido ? 'Compartido' : `100% ${(g.paraQuien && g.paraQuien !== g.pagadoPor ? g.paraQuien : g.pagadoPor) === 'gabriel' ? 'Gabriel' : 'Lu'}`}</span></td>
       <td class="mono">${fmtMonto(g.monto)} ${g.moneda}</td>
     </tr>
   `).join('');
