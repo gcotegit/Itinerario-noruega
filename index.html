@@ -1124,9 +1124,17 @@ function fmtMonto(n){
 }
 
 function renderPresupuesto(){
-  // Tabla de detalle
+  // Tabla de detalle, ordenada por fecha de gasto (usa la primera fecha si el campo es un rango)
+  function parseFecha(f){
+    const m = f.match(/(\d+)\D*(jul|ago)/);
+    if(!m) return 0;
+    const dia = parseInt(m[1],10);
+    const mes = m[2] === 'jul' ? 7 : 8;
+    return mes*100 + dia;
+  }
+  const gastosOrdenados = gastos.slice().sort((a,b) => parseFecha(a.fecha) - parseFecha(b.fecha));
   const tbody = document.getElementById('budget-table');
-  tbody.innerHTML = gastos.map(g => `
+  tbody.innerHTML = gastosOrdenados.map(g => `
     <tr>
       <td class="mono">${g.fecha}</td>
       <td>${g.concepto}${g.nota ? `<div class="note" style="margin-top:3px;">${g.nota}</div>` : ''}</td>
