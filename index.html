@@ -798,7 +798,7 @@ const daysAltOverride = [
       {tag:"auto", text:"Retirar auto: Europcar — Volvo EX30 (eléctrico, AWD, 5 asientos)", note:"Sáb 8/8, 13:00 · Bergen Airport, Flesland Meet and Greet. Conductora principal: Luciana Hurtado. Confirmación: 1205060775 · Referencia: 46597840. Combustible: carga a carga (\"lleno a lleno\"). Kilometraje ilimitado. Total pagado: US$826,29 (0 NOK a pagar en mostrador). Cobertura AXA completa (franquicia daños US$1.841,35, franquicia robo US$1.841,35), responsabilidad civil, parabrisas/espejos/neumáticos, asistencia en carretera. Al ser eléctrico, hay que planificar paradas de carga en los tramos más largos del roadtrip (10/8 y 12/8 especialmente).", map:"Bergen Airport Flesland", status:"reservado"},
       {tag:"ruta", text:"Bergen → Voss → Stalheim", note:"El mirador de Stalheimskleiva queda de paso, ya bajando hacia el fiordo — no suma desvío. La noche es en Stalheim, sin bajar hasta Gudvangen."},
       {tag:"opción", text:"Pueblo vikingo Njardarheimr, en Gudvangen", note:"A 150m del muelle de Gudvangen — desde Stalheim son ~10-15 min en auto (ida y vuelta), un desvío corto pero real, ya no de paso como cuando dormían en Gudvangen. 1,5-2h con tour guiado incluido (arquería, forja, gente que vive el rol vikingo todo el año). Cierra 18:00 en temporada.", map:"Njardarheimr Viking Village"},
-      {tag:"alojamiento", text:"Noche en Stalheim", map:"Stalheim Hotel", status:"pendiente", stay:true}
+      {tag:"alojamiento", text:"Noche en Stalheim", note:"Check-in 8/8 desde las 15:00. Check-out 9/8 de 07:00 a 12:00. Reservado por Booking.com. Tel. +47 56 52 01 22.", map:"Stalheim Hotel", status:"reservado", stay:true}
     ]
   },
   {
@@ -815,7 +815,7 @@ const daysAltOverride = [
       {tag:"paseo", text:"Glaciar Briksdalsbreen", note:"Movido a esta tarde para no cargar el día siguiente: Stryn → Olden/Briksdalen (~30-40 min) → caminata corta y llana (~1h30, ~3km, pasando la cascada Kleivafossen) → vuelta a Stryn. El glaciar se retiró bastante — ya no llega al lago desde 2010 — pero el valle sigue siendo muy lindo. Llegada de vuelta a Stryn ~18:00-18:30.", map:"Briksdalsbreen glacier"},
       {tag:"opción", text:"Si no hacen el glaciar: desvío a Fjærland", note:"Alternativa más liviana si prefieren no hacer la caminata a Briksdalsbreen — un desvío desde Skei con el Museo Noruego del Glaciar (abierto en agosto de 9:00 a 19:00) y vistas de dos brazos del Jostedalsbreen (Boyabreen/Supphellebreen) sin necesidad de caminar. Ojo: es un desvío aparte, no de paso — sumaría tiempo igual, solo que sin la caminata. También se puede hacer el día 16 (12/8), que vuelve a pasar cerca de Skei.", map:"Fjærland Norway"},
       {tag:"opción", text:"No recomendado por el poco tiempo: Astruptunet", note:"La casa-museo del pintor Nikolai Astrup, cerca de Skei junto al lago Jølstravatnet. Es linda pero con lo que ya tiene el día (crucero + Stegastein + glaciar), no entra bien — la dejamos marcada por si en algún momento cambian el resto del plan. También se puede hacer el día 16 (12/8), que vuelve a pasar por Skei.", map:"Astruptunet"},
-      {tag:"alojamiento", text:"Noche en Stryn", map:"hoteles en Stryn", status:"pendiente", stay:true}
+      {tag:"alojamiento", text:"Noche en Stryn", note:"Check-in 9/8 de 15:00 a 23:00. Check-out 10/8 de 07:00 a 11:00. Reservado por Booking.com. Tel. +47 90996783.", map:"hoteles en Stryn", status:"reservado", stay:true}
     ]
   },
   {
@@ -889,14 +889,12 @@ const bookings = {
    El array "reservado" no cambia entre ambos itinerarios. */
 const pendienteAlt = [
   {d:"7 ago", t:"Ferry + bus a Preikestolen (combo desde Stavanger)", url:"https://gofjords.com/experiences/hiking/stavanger/preikestolen-express-bus-round-trip/"},
-  {d:"8 ago", t:"Pueblo vikingo Njardarheimr (Gudvangen)"},
-  {d:"8–9 ago", t:"Gudvangen Fjordtell (u otro alojamiento en Gudvangen)"},
-  {d:"9–10 ago", t:"Hotel en Stryn"},
+  {d:"8 ago", t:"Pueblo vikingo Njardarheimr (Gudvangen) — opcional, desvío desde Stalheim"},
+  {d:"9 ago", t:"Crucero Nærøyfjord/Aurlandsfjord, Flåm → Gudvangen (solo ida)", url:"https://www.norwaysbest.com/en/flam/things-to-do/fjord-cruise-naeroyfjord"},
+  {d:"9 ago", t:"Shuttle bus Gudvangen → Flåm (vuelta después del crucero)", url:"https://www.norwaysbest.com/en/flam/things-to-do/shuttle-bus-flam-gudvangen"},
   {d:"10–11 ago", t:"Hotel en Åndalsnes o en Molde — definir según si hacen la Atlantic Road"},
   {d:"11–12 ago", t:"Hotel en Ålesund"},
   {d:"12–13 ago", t:"Hotel en Voss"},
-  {d:"9 ago", t:"Crucero Nærøyfjord/Aurlandsfjord ida y vuelta desde Flåm", url:"https://www.norwaysbest.com/en/flam/things-to-do/fjord-cruise-naeroyfjord"},
-  {d:"9 ago", t:"Shuttle bus Gudvangen → Flåm (vuelta después del crucero)", url:"https://www.norwaysbest.com/en/flam/things-to-do/shuttle-bus-flam-gudvangen"},
   {d:"10 ago", t:"Ferry Hellesylt → Geiranger"},
   {d:"11 ago", t:"Atlantic Road — todavía sin decidir si la hacen, y desde dónde (Molde o Åndalsnes)"},
   {d:"13 ago", t:"Traslado Torp → Oslo (bus/tren)"}
@@ -909,7 +907,9 @@ const reservadoAlt = [
   {d:"5–6 ago", t:"Scandic Byparken, Bergen · 1 noche, con desayuno (Hotels.com, itin. 72077236622920)"},
   {d:"6–8 ago", t:"Scandic Stavanger City · 2 noches, con desayuno (Booking.com, conf. 6098.327.431 · PIN 4305)"},
   {d:"6 y 8 ago", t:"FlixBus Bergen ↔ Stavanger, ida y vuelta (reserva 337 909 2787)", url:"https://www.flixbus.es/"},
-  {d:"8–13 ago", t:"Auto Europcar, Volvo EX30 eléctrico · retiro y devolución en Bergen Airport (Flesland) (conf. 1205060775 · ref. 46597840)"}
+  {d:"8–13 ago", t:"Auto Europcar, Volvo EX30 eléctrico · retiro y devolución en Bergen Airport (Flesland) (conf. 1205060775 · ref. 46597840)"},
+  {d:"8–9 ago", t:"Hotel en Stalheim · check-in 15:00, check-out 07:00-12:00 (Booking.com, tel. +47 56 52 01 22)"},
+  {d:"9–10 ago", t:"Hotel en Stryn · check-in 15:00-23:00, check-out 07:00-11:00 (Booking.com, tel. +47 90996783)"}
 ];
 
 /* ======================================================================
