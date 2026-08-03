@@ -789,25 +789,26 @@ const daysAltOverride = [
   {
     date:"8 ago", weekday:"Sábado", dayNum:"D12", region:"roadtrip",
     title:"Vuelta a Bergen y arranque del roadtrip",
-    route:"Stavanger → Bergen (bus) → Voss → Stalheim → Gudvangen (auto)",
+    route:"Stavanger → Bergen (bus) → Voss → Stalheim (auto)",
     items:[
       {tag:"bus", text:"FlixBus, Stavanger bussterminal → Bergen Busstasjon", note:"07:50 → 12:30 (4h40). Ruta 652. Andén 7 en Stavanger → Andén N en Bergen. Misma reserva 337 909 2787. Asientos: Gabriel 16A, Luciana 16B.", status:"reservado"},
       {tag:"aviso", text:"Tiempo ajustado con el retiro del auto", note:"El bus llega 12:30 al centro, y el auto se retira 13:00 en el aeropuerto. Contando bajar del bus, retirar el equipaje guardado y el traslado en Bybanen hasta Flesland (~30-45 min), es probable que lleguen 15-30 min después de la hora reservada. No debería ser grave (es \"Meet and Greet\", suele haber flexibilidad), pero si se complica, conviene avisarle a Europcar apenas bajen del bus. Teléfono del mostrador en el aeropuerto de Bergen: +47 55 22 73 20 (abierto 24h)."},
       {tag:"equipaje", text:"Retirar el equipaje guardado en Bergen"},
       {tag:"traslado", text:"Centro de Bergen → Aeropuerto de Bergen (Flesland)", note:"El auto se retira en el aeropuerto, no en el centro — sumar este traslado (Bybanen, la línea de tranvía, ~30-45 min) antes de llegar al mostrador de Europcar.", map:"Bergen Airport Flesland"},
       {tag:"auto", text:"Retirar auto: Europcar — Volvo EX30 (eléctrico, AWD, 5 asientos)", note:"Sáb 8/8, 13:00 · Bergen Airport, Flesland Meet and Greet. Conductora principal: Luciana Hurtado. Confirmación: 1205060775 · Referencia: 46597840. Combustible: carga a carga (\"lleno a lleno\"). Kilometraje ilimitado. Total pagado: US$826,29 (0 NOK a pagar en mostrador). Cobertura AXA completa (franquicia daños US$1.841,35, franquicia robo US$1.841,35), responsabilidad civil, parabrisas/espejos/neumáticos, asistencia en carretera. Al ser eléctrico, hay que planificar paradas de carga en los tramos más largos del roadtrip (10/8 y 12/8 especialmente).", map:"Bergen Airport Flesland", status:"reservado"},
-      {tag:"ruta", text:"Bergen → Voss → mirador de Stalheim/Stalheimskleiva → Gudvangen", note:"El mirador está de paso, bajando hacia el fiordo — no suma desvío."},
-      {tag:"paseo", text:"Pueblo vikingo Njardarheimr", note:"A 150m del muelle de Gudvangen. 1,5-2h con tour guiado incluido (arquería, forja, gente que vive el rol vikingo todo el año). Cierra 18:00 en temporada.", map:"Njardarheimr Viking Village"},
-      {tag:"alojamiento", text:"Noche en Gudvangen", map:"Gudvangen Fjordtell", status:"pendiente", stay:true}
+      {tag:"ruta", text:"Bergen → Voss → Stalheim", note:"El mirador de Stalheimskleiva queda de paso, ya bajando hacia el fiordo — no suma desvío. La noche es en Stalheim, sin bajar hasta Gudvangen."},
+      {tag:"opción", text:"Pueblo vikingo Njardarheimr, en Gudvangen", note:"A 150m del muelle de Gudvangen — desde Stalheim son ~10-15 min en auto (ida y vuelta), un desvío corto pero real, ya no de paso como cuando dormían en Gudvangen. 1,5-2h con tour guiado incluido (arquería, forja, gente que vive el rol vikingo todo el año). Cierra 18:00 en temporada.", map:"Njardarheimr Viking Village"},
+      {tag:"alojamiento", text:"Noche en Stalheim", map:"Stalheim Hotel", status:"pendiente", stay:true}
     ]
   },
   {
     date:"9 ago", weekday:"Domingo", dayNum:"D13", region:"roadtrip",
     title:"Nærøyfjord y glaciar Briksdalsbreen",
-    route:"Gudvangen → Flåm → Aurland → Stegastein → Sogndal → Stryn → Briksdalsbreen",
+    route:"Stalheim → Flåm → Aurland → Stegastein → Sogndal → Stryn → Briksdalsbreen",
     items:[
-      {tag:"ruta", text:"Gudvangen → Flåm en auto (~10 min)"},
-      {tag:"crucero", text:"Crucero Nærøyfjord/Aurlandsfjord ida y vuelta desde Flåm", note:"~2h, ya sin apuro al haber dormido en Gudvangen.", map:"Flåm ferry terminal"},
+      {tag:"ruta", text:"Stalheim → Flåm en auto (~30-35 min)", note:"El auto queda estacionado en Flåm durante el crucero — no se puede subir al barco."},
+      {tag:"crucero", text:"Crucero Nærøyfjord/Aurlandsfjord, Flåm → Gudvangen (solo ida)", note:"2h de navegación. Salidas desde Flåm en temporada alta (jun-ago): 08:30 / 11:00 / 13:30 / 16:00. Conviene tomar la de las 08:30 para tener el resto del día tranquilo.", map:"Flåm ferry terminal"},
+      {tag:"bus", text:"Shuttle bus Gudvangen → Flåm", note:"~20 min, sale ~10-15 min después de la llegada del crucero a Gudvangen. Cierra el circuito de vuelta al auto en Flåm. Conviene reservarlo junto con el crucero para asegurar el horario de conexión.", map:"Gudvangen ferjekai"},
       {tag:"mirador", text:"Mirador de Stegastein", note:"Desvío desde Aurland, 30 m colgado sobre el fiordo a 650 m de altura.", map:"Stegastein Viewpoint"},
       {tag:"ruta", text:"Aurland → Sogndal → Stryn", note:"Vía el ferry Fodnes–Mannheller (cruza el Sognefjord) y luego la Ruta 5. Balestrand queda afuera esta vez — ruta directa, sin el desvío por ferry a Vangsnes/Dragsvik. Llegada a Sogndal ~12:45, almuerzo hasta ~13:45, y de ahí a Stryn (14:00-15:30)."},
       {tag:"opción", text:"Kaupanger Stave Church", note:"Opcional, prácticamente de paso al bajar del ferry en Kaupanger (~12 km de Sogndal). Es una \"stave church\" — una iglesia de madera noruega del año 1140, una de las mejor conservadas del país, con el interior casi intacto. Abierta 15 junio-15 agosto, 10:00-17:00. Visita corta, 30-45 min. También se puede hacer el día 16 (12/8), que vuelve a pasar por esta zona en el camino de regreso.", map:"Kaupanger Stave Church"},
