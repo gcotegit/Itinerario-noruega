@@ -780,11 +780,11 @@ const daysAltOverride = [
   {
     date:"7 ago", weekday:"Viernes", dayNum:"D11", region:"stavanger",
     title:"Preikestolen",
-    route:"Stavanger → Tau → Preikestolen → Stavanger",
+    route:"Stavanger → Preikestolen → Stavanger (bus express GoFjords)",
     items:[
-      {tag:"ferry", text:"Ferry Stavanger → Tau", note:"~40 min. Hay combos de ferry+bus en un solo pasaje.", map:"Stavanger ferry terminal"},
-      {tag:"bus", text:"Bus Tau → inicio del sendero (Preikestolen Fjellstue)", note:"~30-40 min.", map:"Preikestolen Fjellstue"},
-      {tag:"trekking", text:"Caminata a Preikestolen", note:"3,8 km de subida (~2h) y otro tanto de bajada — calcular 4-5h de trekking puro. Arrancar temprano (7-8am) para volver con margen.", map:"Preikestolen"}
+      {tag:"bus", text:"Bus express GoFjords, Stavanger → Preikestolen Fjellstue (ida)", note:"Incluye ferry Stavanger–Tau. Salida desde Stavanger bussterminal. Factura #84921.", map:"Stavanger bussterminal", status:"reservado"},
+      {tag:"trekking", text:"Caminata a Preikestolen", note:"3,8 km de subida (~2h) y otro tanto de bajada — calcular 4-5h de trekking puro. Arrancar temprano (7-8am) para volver con margen.", map:"Preikestolen"},
+      {tag:"bus", text:"Bus express GoFjords, Preikestolen Fjellstue → Stavanger (vuelta)", note:"Factura #84921.", map:"Preikestolen Fjellstue", status:"reservado"}
     ]
   },
   {
@@ -893,7 +893,6 @@ const bookings = {
 /* Pendientes específicos del itinerario alternativo con Stavanger.
    El array "reservado" no cambia entre ambos itinerarios. */
 const pendienteAlt = [
-  {d:"7 ago", t:"Ferry + bus a Preikestolen (combo desde Stavanger)", url:"https://gofjords.com/experiences/hiking/stavanger/preikestolen-express-bus-round-trip/"},
   {d:"8 ago", t:"Pueblo vikingo Njardarheimr (Gudvangen) — opcional, desvío desde Stalheim"},
   {d:"9 ago", t:"Crucero Nærøyfjord/Aurlandsfjord, Flåm → Gudvangen (solo ida)", url:"https://www.norwaysbest.com/en/flam/things-to-do/fjord-cruise-naeroyfjord"},
   {d:"9 ago", t:"Shuttle bus Gudvangen → Flåm (vuelta después del crucero)", url:"https://www.norwaysbest.com/en/flam/things-to-do/shuttle-bus-flam-gudvangen"},
@@ -912,6 +911,7 @@ const reservadoAlt = [
   {d:"5–6 ago", t:"Scandic Byparken, Bergen · 1 noche, con desayuno (Hotels.com, itin. 72077236622920)"},
   {d:"6–8 ago", t:"Scandic Stavanger City · 2 noches, con desayuno (Booking.com, conf. 6098.327.431 · PIN 4305)"},
   {d:"6 y 8 ago", t:"FlixBus Bergen ↔ Stavanger, ida y vuelta (reserva 337 909 2787)", url:"https://www.flixbus.es/"},
+  {d:"7 ago", t:"Bus express Stavanger ↔ Preikestolen, ida y vuelta x2 — GoFjords (factura #84921)", url:"https://gofjords.bilberry.no"},
   {d:"8–13 ago", t:"Auto Europcar, Volvo EX30 eléctrico · retiro y devolución en Bergen Airport (Flesland) (conf. 1205060775 · ref. 46597840)"},
   {d:"8–9 ago", t:"Stalheim Hotel · check-in 15:00, check-out 07:00-12:00, desayuno y parking incluidos (Booking.com, conf. 5624.862.332 · PIN 7179 · tel. +47 56 52 01 22)"},
   {d:"9–10 ago", t:"Lodgen Stryn · check-in 15:00-23:00, check-out 07:00-11:00, desayuno y parking incluidos, baño compartido (Booking.com, conf. 6314.213.657 · PIN 5136 · tel. +47 90 99 67 83)"}
@@ -968,6 +968,7 @@ const gastos = [
   {fecha:"4 ago", concepto:"Souvenirs y cookies", rubro:"Compras", monto:105, moneda:"DKK", pagadoPor:"lu", compartido:true},
   {fecha:"5 ago", concepto:"Regalo para Lu, Freeshop", rubro:"Compras", monto:1500, moneda:"DKK", pagadoPor:"gabriel", compartido:false},
   {fecha:"5 ago", concepto:"Ticket ida y vuelta funicular, Bergen", rubro:"Compras", monto:440, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
+  {fecha:"6 ago", concepto:"Bus express Stavanger ↔ Preikestolen ida y vuelta x2 (GoFjords)", rubro:"Transporte", monto:1144, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
   {fecha:"6 ago", concepto:"Imán heladera", rubro:"Compras", monto:59, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
   {fecha:"6 ago", concepto:"Gorro amarillo", rubro:"Compras", monto:119, moneda:"NOK", pagadoPor:"gabriel", compartido:false}
 ];
