@@ -696,7 +696,7 @@ const days = [
       {tag:"opción", text:"Atlanterhavsparken (acuario)", note:"Opcional si les interesa, cerca del centro.", map:"Atlanterhavsparken Ålesund"},
       {tag:"ruta", text:"Ålesund → Norangsdalen → Hellesylt → Stryn (~2h30)", note:"Ruta escénica por el Hjørundfjord y el valle de Norangsdalen — uno de los fiordos más lindos y menos conocidos de Noruega. Mucho menos transitado que la ruta de ida.", map:"Norangsdalen Norway"},
       {tag:"mirador", text:"Valle de Norangsdalen y Hjørundfjord", note:"Paradas libres según lo que vayan viendo — el valle abre entre paredes de montaña hacia el fiordo.", map:"Norangsdalen Norway"},
-      {tag:"alojamiento", text:"Noche en Stryn", map:"hoteles en Stryn", status:"pendiente", stay:true}
+      {tag:"alojamiento", text:"Noche en Lodgen Stryn", note:"Check-in 11/8 de 15:00 a 23:00. Check-out 12/8 de 07:00 a 11:00. Desayuno incluido. Parking gratis privado, no hace falta reservar. Wifi gratis en habitaciones. Baño compartido. 2 camas individuales. Dirección: 27 Perhusvegen, 6783 Stryn. GPS: N 061° 54.214, E 06° 43.362. Tel. +47 90 99 67 83. Reservado por Booking.com — confirmación 6256.382.189 · PIN 3171.", map:"Lodgen Stryn", status:"reservado", stay:true}
     ]
   },
   {
@@ -836,7 +836,7 @@ const daysAltOverride = [
       {tag:"opción", text:"Mirador de Trollveggen (Troll Wall)", note:"Desvío corto en auto (10-15 min desde el pueblo) hasta un mirador con vista a la pared vertical de roca más alta de Europa (más de 1000 m de caída). No hay que caminar nada, se ve desde el estacionamiento/mirador junto a la ruta.", map:"Trollveggen viewpoint"},
       {tag:"opción", text:"Paseo junto al río Rauma", note:"El pueblo en sí es chico — capital noruega del salmón, con el río pasando al lado. Caminata corta y llana por la costanera, sin pretensiones, para cerrar el día con calma.", map:"Åndalsnes"},
       {tag:"opción", text:"Solo descansar", note:"Åndalsnes no tiene mucho más — es un pueblo de paso, sin vida nocturna. Si el día vino pesado, también es válido llegar, cenar tranquilo y dormir bien antes de Ålesund."},
-      {tag:"alojamiento", text:"Noche en Åndalsnes", map:"hoteles en Åndalsnes", status:"pendiente", stay:true},
+      {tag:"alojamiento", text:"Noche en Åndalsnes (Airbnb)", note:"Check-in 10/8 desde las 15:00. Check-out 11/8 hasta las 11:00. Entrada autónoma con caja de seguridad para llaves. Dirección: Gamle Romsdalsvegen 7, 6300 Åndalsnes. GPS: 62.5650711, 7.6914148. La casa está en la esquina de Gamle Romsdalsvegen y Parkvegen — la entrada es por Gamle Romsdalsvegen (el GPS puede confundir, el nº 7 está en la esquina). Si van en auto: estacionar a la derecha en el patio junto a la cerca/buzón. El departamento está arriba del garaje. Anfitrión: Tone. Reservado por Airbnb.", map:"Gamle Romsdalsvegen 7 Åndalsnes", status:"reservado", stay:true},
       {tag:"opción", text:"Alternativa: seguir hasta Molde en vez de Åndalsnes", note:"Solo vale la pena si al día siguiente van a hacer la Atlantic Road — deja mucho menos manejo ese día (ver Día 15). Cuesta ~1h15-1h30 más de manejo este día (Åndalsnes→Molde, de paso en la misma ruta, no es desvío nuevo), llevando el total del día a ~6h10-6h25 de tránsito. En Molde: subir al mirador de Varden (panorama de 222 picos, 10 min en auto) para el atardecer — en agosto el sol se pone ~21:30, llega bien — y cenar con vista al fiordo en KØL Bar & Bistro, Naustbrygga o Restaurant Hav.", map:"hoteles en Molde", status:"pendiente", stay:true}
     ]
   },
@@ -894,13 +894,9 @@ const bookings = {
    El array "reservado" no cambia entre ambos itinerarios. */
 const pendienteAlt = [
   {d:"8 ago", t:"Pueblo vikingo Njardarheimr (Gudvangen) — opcional, desvío desde Stalheim"},
-  {d:"9 ago", t:"Crucero Nærøyfjord/Aurlandsfjord, Flåm → Gudvangen (solo ida)", url:"https://www.norwaysbest.com/en/flam/things-to-do/fjord-cruise-naeroyfjord"},
-  {d:"9 ago", t:"Shuttle bus Gudvangen → Flåm (vuelta después del crucero)", url:"https://www.norwaysbest.com/en/flam/things-to-do/shuttle-bus-flam-gudvangen"},
-  {d:"10–11 ago", t:"Hotel en Åndalsnes o en Molde — definir según si hacen la Atlantic Road"},
-  {d:"11–12 ago", t:"Hotel en Ålesund"},
+  {d:"12 ago", t:"Crucero Nærøyfjord/Aurlandsfjord, Flåm → Gudvangen (solo ida)", url:"https://www.norwaysbest.com/en/flam/things-to-do/fjord-cruise-naeroyfjord"},
+  {d:"12 ago", t:"Shuttle bus Gudvangen → Flåm (vuelta después del crucero)", url:"https://www.norwaysbest.com/en/flam/things-to-do/shuttle-bus-flam-gudvangen"},
   {d:"12–13 ago", t:"Hotel en Voss"},
-  {d:"10 ago", t:"Ferry Hellesylt → Geiranger"},
-  {d:"11 ago", t:"Atlantic Road — todavía sin decidir si la hacen, y desde dónde (Molde o Åndalsnes)"},
   {d:"13 ago", t:"Traslado Torp → Oslo (bus/tren)"}
 ];
 
@@ -914,7 +910,9 @@ const reservadoAlt = [
   {d:"7 ago", t:"Bus express Stavanger ↔ Preikestolen, ida y vuelta x2 — GoFjords (factura #84921)", url:"https://gofjords.bilberry.no"},
   {d:"8–13 ago", t:"Auto Europcar, Volvo EX30 eléctrico · retiro y devolución en Bergen Airport (Flesland) (conf. 1205060775 · ref. 46597840)"},
   {d:"8–9 ago", t:"Stalheim Hotel · check-in 15:00, check-out 07:00-12:00, desayuno y parking incluidos (Booking.com, conf. 5624.862.332 · PIN 7179 · tel. +47 56 52 01 22)"},
-  {d:"9–10 ago", t:"Lodgen Stryn · check-in 15:00-23:00, check-out 07:00-11:00, desayuno y parking incluidos, baño compartido (Booking.com, conf. 6314.213.657 · PIN 5136 · tel. +47 90 99 67 83)"}
+  {d:"9–10 ago", t:"Lodgen Stryn · check-in 15:00-23:00, check-out 07:00-11:00, desayuno y parking incluidos, baño compartido (Booking.com, conf. 6314.213.657 · PIN 5136 · tel. +47 90 99 67 83)"},
+  {d:"10–11 ago", t:"Airbnb Åndalsnes · Sentrumsnær studioleilighet · Gamle Romsdalsvegen 7 · check-in 15:00, check-out 11:00 · GPS: 62.5650711, 7.6914148 · entrada por Gamle Romsdalsvegen, nº 7 en la esquina, dpto. arriba del garaje · anfitrión: Tone"},
+  {d:"11–12 ago", t:"Lodgen Stryn (regreso) · check-in 15:00-23:00, check-out 07:00-11:00, desayuno y parking incluidos, baño compartido (Booking.com, conf. 6256.382.189 · PIN 3171 · tel. +47 90 99 67 83)"}
 ];
 
 /* ======================================================================
@@ -979,7 +977,9 @@ const gastos = [
   {fecha:"7 ago", concepto:"Tragos", rubro:"Comidas", monto:294, moneda:"NOK", pagadoPor:"lu", compartido:true},
   {fecha:"7 ago", concepto:"Burger King", rubro:"Comidas", monto:94, moneda:"NOK", pagadoPor:"gabriel", compartido:false},
   {fecha:"7 ago", concepto:"Helados", rubro:"Comidas", monto:112, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
-  {fecha:"7 ago", concepto:"Bicis en Stavanger", rubro:"Transporte", monto:185.1, moneda:"NOK", pagadoPor:"gabriel", compartido:true}
+  {fecha:"7 ago", concepto:"Bicis en Stavanger", rubro:"Transporte", monto:185.1, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
+  {fecha:"10 ago", concepto:"Airbnb Åndalsnes (1 noche)", rubro:"Alojamiento", monto:157.75, moneda:"USD", pagadoPor:"lu", compartido:true},
+  {fecha:"11 ago", concepto:"Lodgen Stryn - 2da estadía (1 noche)", rubro:"Alojamiento", monto:2050, moneda:"NOK", pagadoPor:"gabriel", compartido:true}
 ];
 
 /* ====================== RENDER ====================== */
