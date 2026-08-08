@@ -686,19 +686,17 @@ const days = [
   },
   {
     date:"11 ago", weekday:"Martes", dayNum:"D15", region:"roadtrip",
-    title:"Ålesund",
-    route:"Åndalsnes → Ålesund",
+    title:"Ålesund y Norangsdalen",
+    route:"Åndalsnes → Ålesund → Norangsdalen → Stryn",
     items:[
-      {tag:"resumen", text:"Manejo del día: ~100 km, ~1h36", note:"Åndalsnes → Ålesund directo, un solo tramo continuo, sin ferries. El día más liviano del roadtrip en cuanto a manejo. Si suman la Atlantic Road opcional, el tiempo total sube bastante (ver opciones abajo)."},
-      {tag:"ruta", text:"Åndalsnes → Ålesund, directo", note:"~1h36 (100 km) por la E136, sin desvíos.", map:"Ålesund"},
-      {tag:"nota", text:"Atlantic Road: todavía sin decidir", note:"Dos formas de encararla según dónde hayan dormido la noche anterior — ver las dos opciones siguientes."},
-      {tag:"opción", text:"Atlantic Road saliendo desde Molde (si durmieron ahí)", note:"Mucho más corta: Molde queda sobre la misma Ruta 64 que lleva a Vevang, donde arranca el tramo de puentes hasta Kårvåg (Averøy). No tengo el tramo Molde→puente verificado en Maps como el de Åndalsnes, pero por posición en el mapa estimo ~30-45 min por lado — convendría chequearlo en Maps antes de decidir. Esta es la opción que tiene sentido si ya durmieron en Molde.", map:"Atlanterhavsveien"},
-      {tag:"opción", text:"Atlantic Road saliendo desde Åndalsnes (si durmieron ahí)", note:"Verificado en Maps: Åndalsnes → puente Storseisundet son 1h49 (la más rápida). Ida y vuelta desde Åndalsnes son ~3h40 solo de manejo al puente, antes de seguir a Ålesund — bastante más que saliendo desde Molde. En el tramo de puentes (8,3 km) los puntos son el puente Storseisundet (\"el puente a ningún lado\", por el efecto óptico), la pasarela flotante de Eldhusøya (700m, vista 360°) y el mirador de Askevågen.", map:"Atlanterhavsveien"},
-      {tag:"opción", text:"Alternativa más corta: mirador de Varden (Molde)", note:"Si quieren algo de altura y vista sin el desvío completo — panorama de 222 picos desde Molde, ~10 min en auto o 1h caminando desde el centro. Sigue siendo un desvío desde la ruta directa, pero mucho más corto que la Atlantic Road completa.", map:"Varden Molde"},
-      {tag:"paseo", text:"Centro art nouveau de Ålesund", note:"La ciudad se reconstruyó casi entera después de un incendio en 1904, y lo hizo en estilo art nouveau — por eso todo el centro tiene esa arquitectura uniforme de torretas, curvas y fachadas ornamentadas mirando al mar. Paseo a pie por calles como Kongens gate y Apotekergata.", map:"Ålesund town centre"},
-      {tag:"mirador", text:"Mirador de Aksla (Fjellstua)", note:"Se sube por una escalinata de 418 escalones (o en auto) hasta el mirador — la vista clásica de postal de Ålesund: la ciudad entera desplegada entre el mar y las islas, con las montañas de fondo.", map:"Fjellstua Aksla Ålesund"},
+      {tag:"resumen", text:"Manejo del día: ~250 km, ~4h aprox.", note:"Åndalsnes → Ålesund (~1h30), visita a la ciudad, luego Ålesund → Norangsdalen → Hellesylt → Stryn (~2h30). Día equilibrado — ciudad, fiordo y montaña."},
+      {tag:"ruta", text:"Åndalsnes → Ålesund (~1h30)", note:"~100 km por la E136, sin desvíos.", map:"Ålesund"},
+      {tag:"paseo", text:"Centro art nouveau de Ålesund", note:"La ciudad se reconstruyó casi entera después de un incendio en 1904 en estilo art nouveau — torretas, curvas y fachadas ornamentadas mirando al mar. Paseo a pie por calles como Kongens gate y Apotekergata.", map:"Ålesund town centre"},
+      {tag:"mirador", text:"Mirador de Aksla (Fjellstua)", note:"418 escalones (o en auto) hasta el mirador — la vista clásica de postal de Ålesund: la ciudad desplegada entre el mar y las islas, con las montañas de fondo.", map:"Fjellstua Aksla Ålesund"},
       {tag:"opción", text:"Atlanterhavsparken (acuario)", note:"Opcional si les interesa, cerca del centro.", map:"Atlanterhavsparken Ålesund"},
-      {tag:"alojamiento", text:"Noche en Ålesund", map:"hoteles en Ålesund", status:"pendiente", stay:true}
+      {tag:"ruta", text:"Ålesund → Norangsdalen → Hellesylt → Stryn (~2h30)", note:"Ruta escénica por el Hjørundfjord y el valle de Norangsdalen — uno de los fiordos más lindos y menos conocidos de Noruega. Mucho menos transitado que la ruta de ida.", map:"Norangsdalen Norway"},
+      {tag:"mirador", text:"Valle de Norangsdalen y Hjørundfjord", note:"Paradas libres según lo que vayan viendo — el valle abre entre paredes de montaña hacia el fiordo.", map:"Norangsdalen Norway"},
+      {tag:"alojamiento", text:"Noche en Stryn", map:"hoteles en Stryn", status:"pendiente", stay:true}
     ]
   },
   {
@@ -809,10 +807,9 @@ const daysAltOverride = [
     title:"Nærøyfjord y glaciar Briksdalsbreen",
     route:"Stalheim → Flåm → Aurland → Stegastein → Sogndal → Stryn → Briksdalsbreen",
     items:[
-      {tag:"resumen", text:"Manejo del día: ~325 km, ~5h45 al volante (aprox.)", note:"No es corrido: se corta con el crucero + shuttle (~2h20 sin manejar) en el medio, más las paradas largas (Stegastein, almuerzo en Sogndal, caminata al glaciar). Tramos: Stalheim→Flåm ~30km/30-35min · Aurland→Sogndal ~75km/1h35 (incluye ferry Fodnes-Mannheller) · Sogndal→Stryn ~140km/2h20 · Stryn→Briksdalsbreen ida y vuelta ~80km/1h20. Conviene confirmar los tramos exactos en Maps más cerca de la fecha."},
-      {tag:"ruta", text:"Stalheim → Flåm en auto (~30-35 min)", note:"El auto queda estacionado en Flåm durante el crucero — no se puede subir al barco."},
-      {tag:"crucero", text:"Crucero Nærøyfjord/Aurlandsfjord, Flåm → Gudvangen (solo ida)", note:"2h de navegación. Salidas desde Flåm en temporada alta (jun-ago): 08:30 / 11:00 / 13:30 / 16:00. Conviene tomar la de las 08:30 para tener el resto del día tranquilo.", map:"Flåm ferry terminal"},
-      {tag:"bus", text:"Shuttle bus Gudvangen → Flåm", note:"~20 min, sale ~10-15 min después de la llegada del crucero a Gudvangen. Cierra el circuito de vuelta al auto en Flåm. Conviene reservarlo junto con el crucero para asegurar el horario de conexión.", map:"Gudvangen ferjekai"},
+      {tag:"resumen", text:"Manejo del día: ~325 km, ~5h45 al volante (aprox.)", note:"No es corrido: incluye las paradas en Stegastein, almuerzo en Sogndal y la caminata al glaciar. Tramos: Stalheim→Flåm ~30km/30-35min · Aurland→Sogndal ~75km/1h35 (incluye ferry Fodnes-Mannheller) · Sogndal→Stryn ~140km/2h20 · Stryn→Briksdalsbreen ida y vuelta ~80km/1h20. Conviene confirmar los tramos exactos en Maps más cerca de la fecha."},
+      {tag:"ruta", text:"Stalheim → Flåm en auto (~30-35 min)", note:"Pueblo chico y pintoresco al fondo del Aurlandsfjord — punto de salida del crucero que van a hacer el día 16."},
+      {tag:"opción", text:"Visitar Flåm", note:"Vale para estirar las piernas antes de seguir ruta — el muelle, el tren turístico Flåmsbana si el horario da (1h ida y vuelta), o simplemente un café con vista al fiordo.", map:"Flåm"},
       {tag:"mirador", text:"Mirador de Stegastein", note:"Desvío desde Aurland, 30 m colgado sobre el fiordo a 650 m de altura.", map:"Stegastein Viewpoint"},
       {tag:"ruta", text:"Aurland → Sogndal → Stryn", note:"Vía el ferry Fodnes–Mannheller (cruza el Sognefjord) y luego la Ruta 5. Balestrand queda afuera esta vez — ruta directa, sin el desvío por ferry a Vangsnes/Dragsvik. Llegada a Sogndal ~12:45, almuerzo hasta ~13:45, y de ahí a Stryn (14:00-15:30)."},
       {tag:"opción", text:"Kaupanger Stave Church", note:"Opcional, prácticamente de paso al bajar del ferry en Kaupanger (~12 km de Sogndal). Es una \"stave church\" — una iglesia de madera noruega del año 1140, una de las mejor conservadas del país, con el interior casi intacto. Abierta 15 junio-15 agosto, 10:00-17:00. Visita corta, 30-45 min. También se puede hacer el día 16 (12/8), que vuelve a pasar por esta zona en el camino de regreso.", map:"Kaupanger Stave Church"},
@@ -845,15 +842,17 @@ const daysAltOverride = [
   },
   {
     date:"12 ago", weekday:"Miércoles", dayNum:"D16", region:"roadtrip",
-    title:"Vuelta por Hjørundfjord",
-    route:"Ålesund → Norangsdalen → Byrkjelo → Skei → Lærdal (ferry) → Voss",
+    title:"Crucero Nærøyfjord y vuelta a Voss",
+    route:"Stryn → Flåm → Crucero Nærøyfjord → Gudvangen → Voss",
     items:[
-      {tag:"resumen", text:"Manejo del día: ~320-350 km (aprox.), ~5h30-6h30", note:"No es corrido: incluye el ferry corto en Lærdal (sale 2 veces por hora, sin demoras largas) y la parada en el mirador de Norangsdalen. Es el día más largo de manejo de todo el roadtrip. La distancia en km es una estimación — conviene confirmar el total exacto en Maps más cerca de la fecha."},
-      {tag:"mirador", text:"Valle de Norangsdalen, junto al Hjørundfjord", note:"Ruta menos transitada que la de ida, considerado uno de los fiordos más lindos y menos conocidos de Noruega.", map:"Norangsdalen Norway"},
-      {tag:"ruta", text:"Norangsdalen → Byrkjelo → Skei → Lærdal → Voss", note:"Vía la Ruta 60 hasta Byrkjelo, la E39 hasta Skei, y la Ruta 5 hasta Lærdal — ahí un ferry corto (sale 2 veces por hora, sin demoras largas) y el túnel de Lærdal (25 km) hasta Voss por la E16. Directo, sin la parada en Loen/glaciar — eso ya se vio el día 9. Calcular ~5h30-6h30 en total; conviene confirmarlo en Maps más cerca de la fecha.", map:"Lærdal Norway"},
-      {tag:"opción", text:"Kaupanger Stave Church", note:"Ya estaba marcada como opcional el día 9 (9/8) — se puede dejar para acá si ese día prefieren no parar. Prácticamente de paso al cruzar el ferry cerca de Sogndal (~12 km). Es una \"stave church\", iglesia de madera del año 1140, una de las mejor conservadas del país. Abierta 15 junio-15 agosto, 10:00-17:00. Visita corta, 30-45 min.", map:"Kaupanger Stave Church"},
-      {tag:"opción", text:"Desvío a Fjærland", note:"También opcional el día 9 (9/8), como alternativa al glaciar Briksdalsbreen. Acá aplica igual: desvío desde Skei con el Museo Noruego del Glaciar (abierto en agosto de 9:00 a 19:00) y vistas de dos brazos del Jostedalsbreen (Boyabreen/Supphellebreen), sin caminata. Es un desvío aparte, no de paso.", map:"Fjærland Norway"},
-      {tag:"opción", text:"Astruptunet", note:"Igual que las anteriores, ya estaba marcada como opcional (y no recomendada por tiempo) el día 9. La casa-museo del pintor Nikolai Astrup, junto al lago Jølstravatnet, cerca de Skei — de paso en este día también.", map:"Astruptunet"},
+      {tag:"resumen", text:"Manejo del día: ~280 km, ~4h30 aprox.", note:"No es corrido: incluye el crucero Flåm→Gudvangen (2h) + shuttle de vuelta a Flåm (20 min). Tramos: Stryn→Flåm ~3h (vía Skei y túnel de Lærdal) · Flåm→Voss ~1h15 (después del shuttle). Conviene confirmar los tramos en Maps más cerca de la fecha."},
+      {tag:"ruta", text:"Stryn → Skei → Lærdal → Flåm (~3h)", note:"Vía la Ruta 60 hasta Byrkjelo, la E39 hasta Skei, Ruta 5 hasta Lærdal y túnel de Lærdal (25 km) hasta Flåm. El auto queda estacionado en Flåm durante el crucero.", map:"Flåm"},
+      {tag:"crucero", text:"Crucero Nærøyfjord/Aurlandsfjord, Flåm → Gudvangen (solo ida)", note:"2h de navegación. Salidas desde Flåm en temporada alta (jun-ago): 08:30 / 11:00 / 13:30 / 16:00. Saliendo de Stryn ~8:00 se llega a Flåm ~11:00 — tomar el de las 11:00 es lo más cómodo.", map:"Flåm ferry terminal"},
+      {tag:"bus", text:"Shuttle bus Gudvangen → Flåm", note:"~20 min, sale ~10-15 min después de la llegada del crucero a Gudvangen. Cierra el circuito de vuelta al auto en Flåm. Conviene reservarlo junto con el crucero para asegurar el horario de conexión.", map:"Gudvangen ferjekai"},
+      {tag:"ruta", text:"Flåm → Voss (~1h15)", note:"Por la E16, a través del valle de Nærøydalen.", map:"Voss"},
+      {tag:"opción", text:"Kaupanger Stave Church", note:"Prácticamente de paso al cruzar cerca de Sogndal (~12 km). Iglesia de madera del año 1140, una de las mejor conservadas del país. Abierta 15 junio-15 agosto, 10:00-17:00. Visita corta, 30-45 min.", map:"Kaupanger Stave Church"},
+      {tag:"opción", text:"Desvío a Fjærland", note:"Desvío desde Skei con el Museo Noruego del Glaciar (abierto en agosto de 9:00 a 19:00) y vistas de dos brazos del Jostedalsbreen sin caminata. Es un desvío aparte, no de paso.", map:"Fjærland Norway"},
+      {tag:"opción", text:"Astruptunet", note:"La casa-museo del pintor Nikolai Astrup, cerca de Skei — de paso en este día también. No recomendada por tiempo si hacen el crucero.", map:"Astruptunet"},
       {tag:"alojamiento", text:"Noche en Voss", map:"hoteles en Voss", status:"pendiente", stay:true}
     ]
   }
