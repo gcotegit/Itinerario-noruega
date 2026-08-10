@@ -842,12 +842,12 @@ const daysAltOverride = [
   },
   {
     date:"12 ago", weekday:"Miércoles", dayNum:"D16", region:"roadtrip",
-    title:"Crucero Nærøyfjord y vuelta a Voss",
+    title:"Crucero Nærøyfjord y vuelta a Bergen",
     route:"Stryn → Flåm → Crucero Nærøyfjord → Gudvangen → Bergen/Flesland",
     items:[
       {tag:"resumen", text:"Manejo del día: ~280 km, ~4h30 aprox.", note:"No es corrido: incluye el crucero Flåm→Gudvangen (2h) + shuttle de vuelta a Flåm (20 min). Tramos: Stryn→Flåm ~3h (vía Skei y túnel de Lærdal) · Flåm→Bergen/Flesland ~2h30 (después del shuttle). Conviene confirmar los tramos en Maps más cerca de la fecha."},
       {tag:"ruta", text:"Stryn → Skei → Lærdal → Flåm (~3h)", note:"Vía la Ruta 60 hasta Byrkjelo, la E39 hasta Skei, Ruta 5 hasta Lærdal y túnel de Lærdal (25 km) hasta Flåm. El auto queda estacionado en Flåm durante el crucero.", map:"Flåm"},
-      {tag:"crucero", text:"Crucero Nærøyfjord/Aurlandsfjord, Flåm → Gudvangen (solo ida)", note:"2h de navegación. Salidas desde Flåm en temporada alta (jun-ago): 08:30 / 11:00 / 13:30 / 16:00. Saliendo de Stryn ~8:00 se llega a Flåm ~11:00 — tomar el de las 11:00 es lo más cómodo.", map:"Flåm ferry terminal"},
+      {tag:"crucero", text:"Crucero Lustrabaatane, Flåm → Gudvangen (solo ida)", note:"Reserva 68685090 · MS Fjærlandsfjord · Salida 13:30, llegada 15:30 · Check-in 13:15-13:25. 2h de navegación por el Aurlandsfjord y el Nærøyfjord. Mostrar QR al embarcar.", map:"Flåm ferry terminal", status:"reservado"},
       {tag:"bus", text:"Shuttle bus Gudvangen → Flåm", note:"~20 min, sale ~10-15 min después de la llegada del crucero a Gudvangen. Cierra el circuito de vuelta al auto en Flåm. Conviene reservarlo junto con el crucero para asegurar el horario de conexión.", map:"Gudvangen ferjekai"},
       {tag:"ruta", text:"Flåm → Bergen/Flesland (~2h30)", note:"Por la E16 vía Voss y luego la autopista hacia Bergen. Dejás el auto en Europcar Flesland esa misma noche.", map:"Bergen lufthavn Flesland"},
       {tag:"opción", text:"Kaupanger Stave Church", note:"Prácticamente de paso al cruzar cerca de Sogndal (~12 km). Iglesia de madera del año 1140, una de las mejor conservadas del país. Abierta 15 junio-15 agosto, 10:00-17:00. Visita corta, 30-45 min.", map:"Kaupanger Stave Church"},
@@ -893,7 +893,6 @@ const bookings = {
    El array "reservado" no cambia entre ambos itinerarios. */
 const pendienteAlt = [
   {d:"8 ago", t:"Pueblo vikingo Njardarheimr (Gudvangen) — opcional, desvío desde Stalheim"},
-  {d:"12 ago", t:"Crucero Nærøyfjord/Aurlandsfjord, Flåm → Gudvangen (solo ida)", url:"https://www.norwaysbest.com/en/flam/things-to-do/fjord-cruise-naeroyfjord"},
   {d:"12 ago", t:"Shuttle bus Gudvangen → Flåm (vuelta después del crucero)", url:"https://www.norwaysbest.com/en/flam/things-to-do/shuttle-bus-flam-gudvangen"},
   {d:"13 ago", t:"Traslado Torp → Oslo (bus/tren)"}
 ];
@@ -911,6 +910,7 @@ const reservadoAlt = [
   {d:"9–10 ago", t:"Lodgen Stryn · check-in 15:00-23:00, check-out 07:00-11:00, desayuno y parking incluidos, baño compartido (Booking.com, conf. 6314.213.657 · PIN 5136 · tel. +47 90 99 67 83)"},
   {d:"10–11 ago", t:"Airbnb Åndalsnes · Sentrumsnær studioleilighet · Gamle Romsdalsvegen 7 · check-in 15:00, check-out 11:00 · GPS: 62.5650711, 7.6914148 · entrada por Gamle Romsdalsvegen, nº 7 en la esquina, dpto. arriba del garaje · anfitrión: Tone"},
   {d:"11–12 ago", t:"Lodgen Stryn (regreso) · check-in 15:00-23:00, check-out 07:00-11:00, desayuno y parking incluidos, baño compartido (Booking.com, conf. 6256.382.189 · PIN 3171 · tel. +47 90 99 67 83)"},
+  {d:"12 ago", t:"Crucero Lustrabaatane Flåm→Gudvangen · MS Fjærlandsfjord · 13:30-15:30 · reserva 68685090 · check-in 13:15-13:25"},
   {d:"12–13 ago", t:"Airbnb Bergen (cerca Flesland) · anfitrión Nikolas · código HMA9A2EMX9 · no reembolsable · 2 camas · alojamiento entero"}
 ];
 
@@ -979,6 +979,7 @@ const gastos = [
   {fecha:"7 ago", concepto:"Helados", rubro:"Comidas", monto:112, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
   {fecha:"7 ago", concepto:"Bicis en Stavanger", rubro:"Transporte", monto:185.1, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
   {fecha:"10 ago", concepto:"Airbnb Åndalsnes (1 noche)", rubro:"Alojamiento", monto:157.75, moneda:"USD", pagadoPor:"lu", compartido:true},
+  {fecha:"10 ago", concepto:"Ferry Hellesylt → Geiranger (con auto)", rubro:"Transporte", monto:1250, moneda:"NOK", pagadoPor:"lu", compartido:true},
   {fecha:"11 ago", concepto:"Lodgen Stryn - 2da estadía (1 noche)", rubro:"Alojamiento", monto:2050, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
   {fecha:"8 ago", concepto:"Cena en Stalheim", rubro:"Comidas", monto:700, moneda:"NOK", pagadoPor:"lu", compartido:true},
   {fecha:"8 ago", concepto:"Esso en Voss", rubro:"Compras", monto:80, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
@@ -986,9 +987,9 @@ const gastos = [
   {fecha:"8 ago", concepto:"Recarga auto eléctrico (aprox. — revisar tarjeta Lu)", rubro:"Transporte", monto:450, moneda:"NOK", pagadoPor:"lu", compartido:true},
   {fecha:"9 ago", concepto:"Lodgen Stryn 1ra estadía (revisar monto en reserva)", rubro:"Alojamiento", monto:0, moneda:"NOK", pagadoPor:"lu", compartido:true},
   {fecha:"9 ago", concepto:"Hamburguesa Esso", rubro:"Comidas", monto:159, moneda:"NOK", pagadoPor:"lu", compartido:true},
-  {fecha:"9 ago", concepto:"Supermercado (aprox. — revisar tarjeta Lu)", rubro:"Comidas", monto:200, moneda:"NOK", pagadoPor:"lu", compartido:true},
-  {fecha:"10 ago", concepto:"Airbnb Åndalsnes (1 noche)", rubro:"Alojamiento", monto:157.75, moneda:"USD", pagadoPor:"lu", compartido:true},
+  {fecha:"9 ago", concepto:"Supermercado (aprox. — revisar tarjeta Lu)", rubro:"Comidas", monto:200, moneda:"NOK", pagadoPor:"lu", compartido:true},,
   {fecha:"11 ago", concepto:"Lodgen Stryn 2da estadía (1 noche)", rubro:"Alojamiento", monto:2050, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
+  {fecha:"12 ago", concepto:"Crucero Lustrabaatane Flåm→Gudvangen (reserva 68685090)", rubro:"Transporte", monto:1190, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
   {fecha:"12 ago", concepto:"Airbnb Bergen (1 noche, cerca Flesland)", rubro:"Alojamiento", monto:133.56, moneda:"USD", pagadoPor:"gabriel", compartido:true}
 ];
 
