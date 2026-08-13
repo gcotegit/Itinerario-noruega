@@ -879,6 +879,7 @@ const bookings = {
     {d:"2–5 ago", t:"CABINN City Hotel, Copenhague · 3 noches, con desayuno (Hotels.com, itin. 72076234690382)"},
     {d:"5 ago", t:"Vuelo Copenhague → Bergen (SAS 2862)"},
     {d:"13 ago", t:"Vuelo Bergen → Oslo Torp (Widerøe 411)"},
+    {d:"13 ago", t:"Bus 4 + Bus 190, Torp → Oslo"},
     {d:"13–15 ago", t:"MediInn Hotel Oslo · 2 noches, con desayuno (Booking.com, conf. 6246.425.440 · PIN 0112)"},
     {d:"15–16 ago", t:"Vuelo Oslo → Frankfurt → Buenos Aires (LH863 / LH510)"}
   ],
@@ -894,8 +895,7 @@ const bookings = {
       {d:"7 ago", t:"Crucero Nærøyfjord — un tramo (Opción A), ida y vuelta + Flåmsbana (Opción B), o incluido en el paquete de transporte público (Opción C)"},
     {d:"9 ago", t:"Ferry Hellesylt → Geiranger"},
     {d:"10 ago", t:"Crucero Geirangerfjord (opcional, si no vieron ya el fiordo por el ferry con auto)"},
-    {d:"11 ago", t:"Atlantic Road — todavía sin decidir si la hacen, y desde dónde (Molde o Åndalsnes)"},
-    {d:"13 ago", t:"Traslado Torp → Oslo (bus/tren)"}
+    {d:"11 ago", t:"Atlantic Road — todavía sin decidir si la hacen, y desde dónde (Molde o Åndalsnes)"}
   ]
 };
 
@@ -903,8 +903,7 @@ const bookings = {
    El array "reservado" no cambia entre ambos itinerarios. */
 const pendienteAlt = [
   {d:"8 ago", t:"Pueblo vikingo Njardarheimr (Gudvangen) — opcional, desvío desde Stalheim"},
-  {d:"12 ago", t:"Shuttle bus Gudvangen → Flåm (vuelta después del crucero)", url:"https://www.norwaysbest.com/en/flam/things-to-do/shuttle-bus-flam-gudvangen"},
-  {d:"13 ago", t:"Traslado Torp → Oslo (bus/tren)"}
+  {d:"12 ago", t:"Shuttle bus Gudvangen → Flåm (vuelta después del crucero)", url:"https://www.norwaysbest.com/en/flam/things-to-do/shuttle-bus-flam-gudvangen"}
 ];
 
 /* Reservado adicional propio del itinerario alternativo (hoteles de Bergen/Stavanger
@@ -943,6 +942,7 @@ const gastos = [
   {fecha:"6 y 8 ago", concepto:"FlixBus Bergen ↔ Stavanger (ida y vuelta, 2 pasajeros)", rubro:"Transporte", monto:111.95, moneda:"EUR", pagadoPor:"gabriel", compartido:true},
   {fecha:"8–13 ago", concepto:"Auto Europcar, Volvo EX30 eléctrico", rubro:"Transporte", monto:826.29, moneda:"USD", pagadoPor:"lu", compartido:true},
   {fecha:"13 ago", concepto:"Bus Torp → Oslo (traslado aeropuerto)", rubro:"Transporte", monto:880, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
+  {fecha:"13 ago", concepto:"Bus Torp → parada de NY", rubro:"Transporte", monto:110, moneda:"NOK", pagadoPor:"lu", compartido:true},
   {fecha:"13–15 ago", concepto:"MediInn Hotel Oslo (2 noches)", rubro:"Alojamiento", monto:3685.50, moneda:"NOK", pagadoPor:"gabriel", compartido:true},
   {fecha:"29 jul", concepto:"Cena en Augustiner, Mannheim", rubro:"Comidas", monto:25.00, moneda:"EUR", pagadoPor:"gabriel", compartido:false},
   {fecha:"30 jul", concepto:"Almuerzo en Löwenbräu, Heidelberg", rubro:"Comidas", monto:18.00, moneda:"EUR", pagadoPor:"gabriel", compartido:false},
